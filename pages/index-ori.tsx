@@ -1,70 +1,80 @@
-import { ConnectButton } from '@rainbow-me/rainbowkit';
-import type { NextPage } from 'next';
-import Head from 'next/head';
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import type { NextPage } from "next";
+import Head from "next/head";
 
 import {
   Box,
   Heading,
   Container,
   Text,
-  Button,
   Stack,
   Icon,
   useColorModeValue,
   createIcon,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
 const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap"
+        {/* <link
+          href="https://fonts.googleapis.com/css2?family=Dosis&family=Inter:wght@500&display=swap"
           rel="stylesheet"
-        />
+        /> */}
       </Head>
 
-      <Container maxW={'3xl'}>
+      <Container maxW={"3xl"}>
         <Stack
+          maxHeight={"100%"}
           as={Box}
-          textAlign={'center'}
+          textAlign={"center"}
           spacing={{ base: 8, md: 14 }}
-          py={{ base: 20, md: 36 }}>
+          py={{ base: 20, md: 36 }}
+        >
           <Heading
+            textStyle={"h1"}
             fontWeight={600}
-            fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
-            lineHeight={'110%'}>
+            fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
+            lineHeight={"110%"}
+          >
             Here is the Title <br />
-            <Text as={'span'} color={'green.400'}>
+            <Text as={"span"} color={"green.400"}>
               Sub-Title Here
             </Text>
           </Heading>
-          <Text color={'gray.500'}>
-          Fusce hendrerit, est a aliquam elementum, augue magna maximus tellus, sit amet pretium magna mauris eget purus. Curabitur quis fringilla orci, eget imperdiet erat. Nullam rhoncus et libero sed fermentum. Maecenas consequat in risus et dignissim. Duis ornare metus nec odio iaculis ultrices. Ut sagittis quis massa rutrum gravida. Vestibulum non nibh mattis, commodo arcu nec, mollis augue.
+          <Text color={"gray.500"}>
+            Fusce hendrerit, est a aliquam elementum, augue magna maximus
+            tellus, sit amet pretium magna mauris eget purus. Curabitur quis
+            fringilla orci, eget imperdiet erat. Nullam rhoncus et libero sed
+            fermentum. Maecenas consequat in risus et dignissim. Duis ornare
+            metus nec odio iaculis ultrices. Ut sagittis quis massa rutrum
+            gravida. Vestibulum non nibh mattis, commodo arcu nec, mollis augue.
           </Text>
           <Stack
-            direction={'column'}
+            direction={"column"}
             spacing={3}
-            align={'center'}
-            alignSelf={'center'}
-            position={'relative'}>
-              <ConnectButton />
-              <Box>
+            align={"center"}
+            alignSelf={"center"}
+            position={"relative"}
+          >
+            <ConnectButton />
+            <Box>
               <Icon
                 as={Arrow}
-                color={useColorModeValue('gray.800', 'gray.300')}
+                color={useColorModeValue("gray.800", "gray.300")}
                 w={71}
-                position={'absolute'}
+                position={"absolute"}
                 right={-71}
-                top={'10px'}
+                top={"10px"}
               />
               <Text
-                fontSize={'lg'}
-                fontFamily={'Caveat'}
-                position={'absolute'}
-                right={'-125px'}
-                top={'-15px'}
-                transform={'rotate(10deg)'}>
+                fontSize={"lg"}
+                fontFamily={"Caveat"}
+                position={"absolute"}
+                right={"-125px"}
+                top={"-15px"}
+                transform={"rotate(10deg)"}
+              >
                 Login Here
               </Text>
             </Box>
@@ -72,13 +82,12 @@ const Home: NextPage = () => {
         </Stack>
       </Container>
     </>
-
   );
 };
 
 const Arrow = createIcon({
-  displayName: 'Arrow',
-  viewBox: '0 0 72 24',
+  displayName: "Arrow",
+  viewBox: "0 0 72 24",
   path: (
     <path
       fillRule="evenodd"
