@@ -6,6 +6,8 @@ import { useRouter } from 'next/router'
 import * as badgeEmpty from "../../assets/badgeEmpty.png";
 import * as badgeFull from "../../assets/badgeFull.png";
 
+import { HStack } from "@chakra-ui/react";
+
 export type ItemData = {
     title: string;
     active: boolean;
@@ -36,21 +38,24 @@ export function StepElement({ data }: Props) {
             return (
                 <>
                     <div className="flex items-center my-1">
-                        <motion.div 
-                        animate={{ scale: [1, 1.5, 1], opacity: [0, 1] }}
-                        transition={{ duration: 0.5, delay: 0.5 }}
-                        >
-                        <Image alt="image1" width="100" src={badgeFull} />
-                        </motion.div>
-                        <h1 className="textLabel completed">{title}</h1>
+                        <HStack>
+                            <motion.div 
+                            animate={{ scale: [1, 1.5, 1], opacity: [0, 1] }}
+                            transition={{ duration: 0.5, delay: 0.5 }}
+                            >
+                            <Image alt="image1" width={'80'} height={'80'} src={badgeFull} />
+                            </motion.div>
+                            <h1 className="textLabel completed">{title}</h1>
+
+                        </HStack>
                     </div>
 
                     <style jsx>{`
                         .textLabel {
-                            font-size: 30px!important;
-                            font-weight: 400!important;
-                            width: 300px;
-                            padding-left: 35px;
+                            font-size: 35px!important;
+                            font-weight: 300!important;
+                            width: 350px;
+                            padding-left: 25px;
                             }
                         .active {
                             color: yellow;
@@ -65,21 +70,22 @@ export function StepElement({ data }: Props) {
             return (
                 <>
                 <div className="flex items-center my-1 cursor-pointer" onClick={handleClick}>
-                    <motion.div 
-                    animate={{ scale: [1, 1.5, 1], opacity: [0, 1] }}
-                    transition={{ duration: 0.5, delay: 0.5 }}
-                    >
-                    <Image alt="image1" width="100" src={badgeEmpty} />
-                    </motion.div>
-                    <h1 className="textLabel active">{title}</h1>
+                    <HStack>
+                        <motion.div 
+                        animate={{ scale: [1, 1.5, 1], opacity: [0, 1] }}
+                        transition={{ duration: 0.5, delay: 0.5 }}>
+                                <Image alt="image1" width={'80'} height={'80'} src={badgeEmpty} />
+                        </motion.div>
+                        <h1 className="textLabel active">{title}</h1>
+                    </HStack>
                 </div>
 
                     <style jsx>{`
                         .textLabel {
-                            font-size: 30px!important;
-                            font-weight: 400!important;
-                            width: 300px;
-                            padding-left: 35px;
+                            font-size: 35px!important;
+                            font-weight: 300!important;
+                            width: 350px;
+                            padding-left: 25px;
                             }
                         .active {
                             color: yellow;
@@ -95,21 +101,24 @@ export function StepElement({ data }: Props) {
         return (
             <>
             <div className="flex items-center my-1">
-                <motion.div 
-                animate={{ scale: [1, 1.5, 1], opacity: [0, 1] }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                >
-                <Image alt="image1" width="100" src={badgeEmpty} />
-                </motion.div>
-                <h1 className="textLabel inactive">{title}</h1>
+                <HStack>
+                    <motion.div 
+                    animate={{ scale: [1, 1.5, 1], opacity: [0, 1] }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
+                    >
+                    <Image alt="image1" width={'80'} height={'80'} src={badgeEmpty} />
+                    </motion.div>
+                    <h1 className="textLabel inactive">{title}</h1>
+                    
+                </HStack>
             </div>
  
                 <style jsx>{`
                         .textLabel {
-                            font-size: 30px!important;
-                            font-weight: 400!important;
-                            width: 300px;
-                            padding-left: 35px;
+                            font-size: 35px!important;
+                            font-weight: 300!important;
+                            width: 350px;
+                            padding-left: 25px;
                             }
                         .active {
                             color: yellow;

@@ -84,16 +84,16 @@ const Landing: NextPage<Props> = (props) => {
 
             <Box bg="bg-surface" borderRadius="lg" p={{ base: "4", md: "6" }}>
 
-              <div className="container-l1 bg-cover bg-center h-screen">
+              {/* <div className="container-l1 bg-cover bg-center h-screen">
                 <div className="container2-l1 bg-gray-900 bg-opacity-50  h-screen">
                   <div className="flex flex-col justify-center items-center h-screen">
+                  </div>
+                </div>
+              </div>          */}
                     <StepElement data={step1Data} />
                     <StepElement data={step2Data} />
                     <StepElement data={step3Data} />
                     <StepElement data={step4Data} />
-                  </div>
-                </div>
-              </div>         
 
             </Box>
 
