@@ -93,7 +93,7 @@ const Landing: NextPage<Props> = (props) => {
             <Stack justify="center" direction="row" padding={"5"}>
               {isConnected && (
                 <Link href="/level1-nft-collection">
-                  <WallyButton boxShadow='xl' mx={6}>Get Started</WallyButton>
+                  <WallyButton boxShadow='xl' mx={6}>See Collection</WallyButton>
                 </Link>
               )}
             </Stack>
