@@ -1,6 +1,8 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import type { NextPage } from "next";
 
+import { WallyButton } from "../components/WallyButton.js";
+
 import {
   Box,
   Button,
@@ -135,7 +137,7 @@ const Landing: NextPage<Props> = (props) => {
             </Stack> */}
             </Box>
             <Stack justify="center" direction="row" padding={"5"}>
-              <Button
+              {/* <Button
                 variant="solid"
                 backgroundColor={"#00B5D8"}
                 color={"black"}
@@ -148,7 +150,10 @@ const Landing: NextPage<Props> = (props) => {
                 borderRightWidth={"12px"}
               >
                 Mint
-              </Button>
+              </Button> */}
+
+              <WallyButton boxShadow='xl' mx={6}>Mint 1</WallyButton>
+              <WallyButton boxShadow='xl' mx={6}>Mint 2</WallyButton>
             </Stack>
           </Container>
         </Box>
