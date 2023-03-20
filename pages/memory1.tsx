@@ -10,6 +10,9 @@ import * as ReadBook from "../assets/ReadBook.png";
 import Image from "next/image";
 import Link from 'next/link';
 
+import { StepElement } from "../components/level1/stepElement";
+
+
 import {
   Box,
   Button,
@@ -31,6 +34,30 @@ type Props = {
 const Landing: NextPage<Props> = (props) => {
 
   const { isConnected } = useAccount();
+
+  const currentStep = 1;
+
+  const step1Data = {
+    title: "Memory 01",
+    active: currentStep >= 1,
+    complete: currentStep > 1,
+  };
+  const step2Data = {
+    title: "Memory 02",
+    active: currentStep >= 2,
+    complete: currentStep > 2,
+  };
+  const step3Data = {
+    title: "Memory 03",
+    active: currentStep >= 3,
+    complete: currentStep > 3,
+  };
+  const step4Data = {
+    title: "Memory 04",
+    active: currentStep >= 4,
+    complete: currentStep > 4,
+  };
+
 
   return (
     <>
@@ -57,30 +84,47 @@ const Landing: NextPage<Props> = (props) => {
 
             <Box bg="bg-surface" borderRadius="lg" p={{ base: "4", md: "6" }}>
 
-              <div className="py-1 flex flex-col items-center">
-                <Link href="/level1">
-                  <Image src={StartGame} alt="StartGame" />
-                </Link>
-              </div>
-
-              <div className="py-1 flex flex-col items-center">
-                <Link href="/memory1">
-                  <Image src={ReadBook} alt="ReadBook" />
-                </Link>
-              </div>             
+              {/* <div className="container-l1 bg-cover bg-center h-screen">
+                <div className="container2-l1 bg-gray-900 bg-opacity-50  h-screen">
+                  <div className="flex flex-col justify-center items-center h-screen">
+                  </div>
+                </div>
+              </div>          */}
+                    <StepElement data={step1Data} />
+                    <StepElement data={step2Data} />
+                    <StepElement data={step3Data} />
+                    <StepElement data={step4Data} />
 
             </Box>
 
             <Stack justify="center" direction="row" padding={"5"}>
-              {isConnected && (
+              {/* {isConnected && (
                 <Link href="/menu">
                   <WallyButton boxShadow='xl' mx={6}>Get Started</WallyButton>
                 </Link>
-              )}
+              )} */}
             </Stack>
           </Container>
         </Box>
       </Box>
+      <style jsx>{`
+          .container-l1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 55vh;
+            width: 50vw;
+            background-image: url("../assets/map01.png");
+          }
+
+          .container2-l1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 55vh;
+            width: 50vw;
+          }
+        `}</style>
 
     </>
   );

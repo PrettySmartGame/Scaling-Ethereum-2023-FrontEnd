@@ -30,7 +30,7 @@ export function StepElement({ data }: Props) {
     const handleClick = (e: any) => {
         e.preventDefault();
         console.log("goToPaint");
-        router.push('/paint');
+        router.push('/memory-game');
     }
 
     if (active) {

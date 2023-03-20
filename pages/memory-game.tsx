@@ -10,6 +10,9 @@ import * as ReadBook from "../assets/ReadBook.png";
 import Image from "next/image";
 import Link from 'next/link';
 
+import { MemoryCards } from "../components/Cards.js";
+
+
 import {
   Box,
   Button,
@@ -31,6 +34,10 @@ type Props = {
 const Landing: NextPage<Props> = (props) => {
 
   const { isConnected } = useAccount();
+
+  const currentStep = 1;
+
+
 
   return (
     <>
@@ -57,31 +64,20 @@ const Landing: NextPage<Props> = (props) => {
 
             <Box bg="bg-surface" borderRadius="lg" p={{ base: "4", md: "6" }}>
 
-              <div className="py-1 flex flex-col items-center">
-                <Link href="/level1">
-                  <Image src={StartGame} alt="StartGame" />
-                </Link>
-              </div>
-
-              <div className="py-1 flex flex-col items-center">
-                <Link href="/memory1">
-                  <Image src={ReadBook} alt="ReadBook" />
-                </Link>
-              </div>             
+              <MemoryCards />
 
             </Box>
 
             <Stack justify="center" direction="row" padding={"5"}>
               {isConnected && (
                 <Link href="/menu">
-                  <WallyButton boxShadow='xl' mx={6}>Get Started</WallyButton>
+                  <WallyButton boxShadow='xl' mx={6}>Mint</WallyButton>
                 </Link>
               )}
             </Stack>
           </Container>
         </Box>
       </Box>
-
     </>
   );
 };
