@@ -4,7 +4,9 @@ import { useAccount } from "wagmi";
 import { WallyButton } from "../components/WallyButton.js";
 import  { WallyHeader } from "../components/WallyHeader.js";
 
-import * as BlockchainGame from "../assets/blockchaingame.png";
+import * as StartGame from "../assets/StartGame.png";
+import * as ReadBook from "../assets/ReadBook.png";
+
 import Image from "next/image";
 import Link from 'next/link';
 
@@ -55,16 +57,22 @@ const Landing: NextPage<Props> = (props) => {
 
             <Box bg="bg-surface" borderRadius="lg" p={{ base: "4", md: "6" }}>
 
-                <div className="py-1 flex flex-col items-center">
-                  <Image src={BlockchainGame}  alt="logo" />
+            <div className="py-1 flex flex-col items-center">
+                  <Link href="/level1">
+                    <Image src={StartGame} alt="StartGame" />
+                  </Link>
                 </div>
+
+                <div className="py-1 flex flex-col items-center">
+                  <Image src={ReadBook} alt="ReadBook" />
+                </div>             
 
             </Box>
 
             <Stack justify="center" direction="row" padding={"5"}>
               {isConnected && (
-                <Link href="/explore">
-                  <WallyButton boxShadow='xl' mx={6}>Start Now</WallyButton>
+                <Link href="/menu">
+                  <WallyButton boxShadow='xl' mx={6}>Get Started</WallyButton>
                 </Link>
               )}
             </Stack>
