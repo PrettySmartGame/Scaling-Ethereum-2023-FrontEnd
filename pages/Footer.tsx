@@ -49,3 +49,5 @@ export const Footer = () => (
     </Container>
   </div>
 );
+
+export default Footer;
