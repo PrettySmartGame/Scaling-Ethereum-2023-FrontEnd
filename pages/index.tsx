@@ -1,11 +1,9 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import type { NextPage } from "next";
-
-import { WallyButton } from "../components/WallyButton.js";
-
+import { WallyButton } from "../components/WallyButtons/index.js";
+import "../components/WallyButtons/";
 import {
   Box,
-  Button,
   Container,
   VStack,
   HStack,
@@ -16,15 +14,10 @@ import {
 } from "@chakra-ui/react";
 import { Footer } from "./Footer";
 
-type Props = {
-  header: string;
-  subHeader: string;
-};
-
-const Landing: NextPage<Props> = (props) => {
+const Landing: NextPage = (props) => {
   return (
     <>
-      <Box maxH="100vh">
+      <Box>
         <Box
           h="100vh"
           as="section"
@@ -66,6 +59,7 @@ const Landing: NextPage<Props> = (props) => {
                           as="h1"
                           size="2xl"
                           noOfLines={1}
+                          padding={1}
                           textStyle="h1"
                           color={"#00B5D8"}
                           fontFamily={"mono"}
@@ -75,7 +69,7 @@ const Landing: NextPage<Props> = (props) => {
                       </HStack>
                       <Text
                         fontFamily={"mono"}
-                        margin={"4"}
+                        padding={3}
                         fontSize="lg"
                         fontWeight="medium"
                       >
@@ -137,28 +131,16 @@ const Landing: NextPage<Props> = (props) => {
             </Stack> */}
             </Box>
             <Stack justify="center" direction="row" padding={"5"}>
-              {/* <Button
-                variant="solid"
-                backgroundColor={"#00B5D8"}
-                color={"black"}
-                size={"lg"}
-                boxShadow={"20px"}
-                borderColor={"#9DECF9"}
-                borderBottomRadius={"10px"}
-                borderBottomRightRadius={"10px"}
-                borderBottomWidth={"thick"}
-                borderRightWidth={"12px"}
-              >
-                Mint
-              </Button> */}
-
-              <WallyButton boxShadow='xl' mx={6}>Mint 1</WallyButton>
-              <WallyButton boxShadow='xl' mx={6}>Mint 2</WallyButton>
+              <WallyButton boxShadow="xl" mx={6}>
+                Mint 1
+              </WallyButton>
+              <WallyButton boxShadow="xl" mx={6}>
+                Mint 2
+              </WallyButton>
             </Stack>
           </Container>
         </Box>
       </Box>
-
       <Footer />
     </>
   );
