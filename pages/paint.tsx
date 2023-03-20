@@ -73,10 +73,10 @@ const Landing: NextPage<Props> = (props) => {
             <Box bg="bg-surface" borderRadius="lg" p={{ base: "4", md: "6" }}>
 
             <div className="flex">
-        <div className="w-1/2 bg-white-500 h-screen">
+        <div>
           <PaintCanvas
-                width={500}
-                height={600}
+                width={470}
+                height={500}
                 color={color}
                 lineWidth={lineWidth}
                 tool={tool}
