@@ -46,3 +46,5 @@ export const Footer = () => (
     </Stack>
   </Container>
 );
+
+export default Footer;
