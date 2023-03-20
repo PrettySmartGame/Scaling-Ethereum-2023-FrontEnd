@@ -1,8 +1,6 @@
 import type { NextPage } from "next";
 import { useAccount } from "wagmi";
 
-import React, { useState } from 'react';
-
 import { WallyButton } from "../components/WallyButton.js";
 import  { WallyHeader } from "../components/WallyHeader.js";
 
@@ -12,12 +10,7 @@ import * as ReadBook from "../assets/ReadBook.png";
 import Image from "next/image";
 import Link from 'next/link';
 
-import { StepElement } from "../components/level1/stepElement";
-
-import PaintCanvas from '../components/PaintCanvas';
-import ColorPicker from '../components/ColorPicker';
-import ToolPicker from '../components/ToolPicker';
-import LineWidthPicker from '../components/LineWidthPicker';
+import { StepElement } from "../components/level1/stepElementNext";
 
 import {
   Box,
@@ -41,10 +34,28 @@ const Landing: NextPage<Props> = (props) => {
 
   const { isConnected } = useAccount();
 
-  const [color, setColor] = useState('#000000');
-  const [lineWidth, setLineWidth] = useState(5);
-  const [tool, setTool] = useState('pen');
-  const [imageUrl, setImageUrl] = useState('../assets/web3Identity.png');
+  const currentStep = 1;
+
+  const step1Data = {
+    title: "Identity in Web 3",
+    active : (currentStep>=1),
+    complete: (currentStep>1)
+  }
+  const step2Data = {
+    title: "Security",
+    active : (currentStep>=2),
+    complete: (currentStep>2)
+  }
+  const step3Data = {
+    title: "Claim Your Tokens",
+    active : (currentStep>=3),
+    complete: (currentStep>3)
+  }
+  const step4Data = {
+    title: "Transfer Tokens",
+    active : (currentStep>=4),
+    complete: (currentStep>4)
+  }
 
 
   return (
@@ -72,42 +83,41 @@ const Landing: NextPage<Props> = (props) => {
 
             <Box bg="bg-surface" borderRadius="lg" p={{ base: "4", md: "6" }}>
 
-            <div className="flex">
-        <div>
-          <PaintCanvas
-                width={470}
-                height={500}
-                color={color}
-                lineWidth={lineWidth}
-                tool={tool}
-                imageUrl={imageUrl} // Pass the imageUrl prop
-              />
-        </div>
-        <div className="w-1/2 flex flex-col">
-          <div className="flex-row my-2">
-            <ToolPicker tool={tool} setTool={setTool} />
-          </div>
-          <div className="flex-row my-2">
-            <LineWidthPicker lineWidth={lineWidth} setLineWidth={setLineWidth} />
-          </div>
-          <div className="flex-row my-2">
-            <ColorPicker color={color} setColor={setColor} />
-          </div>
-        </div>
-      </div>
+                    <StepElement data={step1Data} />
+                    <StepElement data={step2Data} />
+                    <StepElement data={step3Data} />
+                    <StepElement data={step4Data} />
 
             </Box>
 
             <Stack justify="center" direction="row" padding={"5"}>
               {isConnected && (
-                <Link href="/rewards1">
-                  <WallyButton boxShadow='xl' mx={6}>Mint</WallyButton>
+                <Link href="/level1-nft-collection">
+                  <WallyButton boxShadow='xl' mx={6}>Get Started</WallyButton>
                 </Link>
               )}
             </Stack>
           </Container>
         </Box>
       </Box>
+      <style jsx>{`
+          .container-l1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 55vh;
+            width: 50vw;
+            background-image: url("../assets/map01.png");
+          }
+
+          .container2-l1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 55vh;
+            width: 50vw;
+          }
+        `}</style>
 
     </>
   );
