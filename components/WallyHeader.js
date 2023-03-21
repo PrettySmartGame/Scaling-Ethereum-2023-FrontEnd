@@ -9,6 +9,7 @@ import {
     Stack,
     Text,
     Heading,
+    Center,
   } from "@chakra-ui/react";
 
   import { ConnectButton } from "@rainbow-me/rainbowkit";
@@ -71,9 +72,9 @@ export const WallyHeader = () => (
         pb="5"
         borderColor="accent"
       >
-        <Stack direction="row" spacing="3">
+        <Center>
           <ConnectButton />
-        </Stack>
+        </Center>
       </Box>
     </VStack>
   </Container>
