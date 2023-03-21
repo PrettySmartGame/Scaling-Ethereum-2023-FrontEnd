@@ -10,8 +10,7 @@ import * as ReadBook from "../assets/ReadBook.png";
 import Image from "next/image";
 import Link from 'next/link';
 
-import { StepElement } from "../components/level1/stepElement";
-
+import { StepElement } from "../components/level1/stepElementNext";
 
 import {
   Box,
@@ -39,24 +38,24 @@ const Landing: NextPage<Props> = (props) => {
 
   const step1Data = {
     title: "Memory - Identity in Web 3",
-    active: currentStep >= 1,
-    complete: currentStep > 1,
-  };
+    active : (currentStep>=1),
+    complete: (currentStep>1)
+  }
   const step2Data = {
     title: "Memory - Security",
-    active: currentStep >= 2,
-    complete: currentStep > 2,
-  };
+    active : (currentStep>=2),
+    complete: (currentStep>2)
+  }
   const step3Data = {
     title: "Memory - Claim Your Tokens",
-    active: currentStep >= 3,
-    complete: currentStep > 3,
-  };
+    active : (currentStep>=3),
+    complete: (currentStep>3)
+  }
   const step4Data = {
     title: "Memory - Transfer Tokens",
-    active: currentStep >= 4,
-    complete: currentStep > 4,
-  };
+    active : (currentStep>=4),
+    complete: (currentStep>4)
+  }
 
 
   return (
@@ -84,12 +83,6 @@ const Landing: NextPage<Props> = (props) => {
 
             <Box bg="bg-surface" borderRadius="lg" p={{ base: "4", md: "6" }}>
 
-              {/* <div className="container-l1 bg-cover bg-center h-screen">
-                <div className="container2-l1 bg-gray-900 bg-opacity-50  h-screen">
-                  <div className="flex flex-col justify-center items-center h-screen">
-                  </div>
-                </div>
-              </div>          */}
                     <StepElement data={step1Data} />
                     <StepElement data={step2Data} />
                     <StepElement data={step3Data} />
@@ -98,11 +91,11 @@ const Landing: NextPage<Props> = (props) => {
             </Box>
 
             <Stack justify="center" direction="row" padding={"5"}>
-              {/* {isConnected && (
-                <Link href="/menu">
-                  <WallyButton boxShadow='xl' mx={6}>Get Started</WallyButton>
+              {isConnected && (
+                <Link href="/level1-nft-collection">
+                  <WallyButton boxShadow='xl' mx={6}>See Collection</WallyButton>
                 </Link>
-              )} */}
+              )}
             </Stack>
           </Container>
         </Box>
