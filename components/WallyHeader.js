@@ -17,23 +17,15 @@ import {
 export const WallyHeader = () => (
 
     <Container
-    w="100"
+    maxW="container.lg"
     bgGradient="linear(to-r, gray.300, yellow.400, pink.200)"
-    borderTopRadius={"xl"}
-    padding={"30"}
-  >
+    borderTopRadius={"2xl"}
+    padding={"30"} >
     <VStack
       divider={<StackDivider borderColor="gray.200" />}
       spacing={4}
-      align="stretch"
-      width={{ base: "full", md: "md", lg: "lg", xl: "xl" }}
     >
-      <Box
-        bg="bg-surface"
-        px={{ base: "4", md: "6" }}
-        pt="5"
-        borderColor="accent"
-      >
+      <Box>
         <Stack
           spacing="4"
           direction={{ base: "column", sm: "row" }}
@@ -66,12 +58,7 @@ export const WallyHeader = () => (
           </HStack>
         </Stack>
       </Box>
-      <Box
-        bg="bg-surface"
-        px={{ base: "4", md: "6" }}
-        pb="5"
-        borderColor="accent"
-      >
+      <Box>
         <Center>
           <ConnectButton />
         </Center>

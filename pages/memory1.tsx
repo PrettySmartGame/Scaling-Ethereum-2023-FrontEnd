@@ -78,9 +78,10 @@ const Landing: NextPage<Props> = (props) => {
           <WallyHeader />
 
           <Container
-            w="100%"
             borderBottomRadius={"xl"}
-            bgGradient="linear(to-r, #F6F0EA, #F1DFD1)">
+            bgGradient="linear(to-r, #F6F0EA, #F1DFD1)"
+            maxW="container.lg"
+            >
 
             <Box bg="bg-surface" borderRadius="lg" p={{ base: "4", md: "6" }}>
 

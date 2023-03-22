@@ -18,6 +18,7 @@ import {
   Stack,
   Text,
   Heading,
+  Center,
 } from "@chakra-ui/react";
 import { Footer } from "./Footer";
 
@@ -49,15 +50,16 @@ const Landing: NextPage<Props> = (props) => {
           <WallyHeader />
 
           <Container
-            w="100%"
             borderBottomRadius={"xl"}
-            bgGradient="linear(to-r, #F6F0EA, #F1DFD1)">
+            bgGradient="linear(to-r, #F6F0EA, #F1DFD1)"
+            maxW="container.lg"
+            >
 
             <Box bg="bg-surface" borderRadius="lg" p={{ base: "4", md: "6" }}>
 
-                <div className="py-1 flex flex-col items-center">
+                <Center>
                   <Image src={KidsWithTablet} alt="kids" />
-                </div>
+                </Center>
 
             </Box>
 

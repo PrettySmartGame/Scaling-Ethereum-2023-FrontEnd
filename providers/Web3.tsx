@@ -58,7 +58,6 @@ const PolygonzkEVMTestnet: Chain = {
 
 const { chains, provider, webSocketProvider } = configureChains(
   [
-    polygon,
     polygonMumbai,
     optimism,
     optimismGoerli,

@@ -6,8 +6,9 @@ import { WallyHeader } from "../components/WallyHeader.js";
 import * as BlockchainGame from "../assets/blockchaingame.png";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from 'next/router'
 
-import { Box, Container, Stack } from "@chakra-ui/react";
+import { Box, Center, Container, Stack } from "@chakra-ui/react";
 import Footer from "./Footer";
 import WallyButton from "../components/WallyButton.js";
 
@@ -18,6 +19,16 @@ type Props = {
 
 const Landing: NextPage<Props> = (props) => {
   const { isConnected } = useAccount();
+
+  const router = useRouter()
+
+  const handleClick = (e: any) => {
+    console.log("clicked") ;
+    e.preventDefault();
+    console.log("goToPaint");
+    router.push('/explore');
+
+  };
 
   return (
     <>
@@ -36,25 +47,24 @@ const Landing: NextPage<Props> = (props) => {
           <Container
             borderBottomRadius={"xl"}
             bgGradient="linear(to-r, #F6F0EA, #F1DFD1)"
+            maxW="container.lg"
           >
             <Box bg="bg-surface" borderRadius="lg" p={{ base: "4", md: "6" }}>
-              <div className="py-1 flex flex-col items-center">
+              <Center>
                 <Image src={BlockchainGame} alt="logo" />
-              </div>
+              </Center>
             </Box>
 
             <Stack justify="center" direction="row" padding={"5"}>
               {isConnected && (
-                <Link href="/explore">
-                  <WallyButton boxShadow="xl" mx={6}>
-                    Start Now
-                  </WallyButton>
-                </Link>
-              )}
+                <WallyButton boxShadow="xl" mx={6} onClick={handleClick}>
+                  Start Now
+                </WallyButton>
+            )}
             </Stack>
           </Container>
         </Box>
-        <Footer />
+        {/* <Footer /> */}
       </Box>
     </>
   );

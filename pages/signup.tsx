@@ -55,9 +55,10 @@ const Landing: NextPage<Props> = (props) => {
           <WallyHeader />
 
           <Container
-            w="100%"
             borderBottomRadius={"xl"}
-            bgGradient="linear(to-r, #F6F0EA, #F1DFD1)">
+            bgGradient="linear(to-r, #F6F0EA, #F1DFD1)"
+            maxW="container.lg"
+            >
 
             <Box bg="bg-surface" borderRadius="lg" p={{ base: "4", md: "6" }}>
 
@@ -75,6 +76,7 @@ const Landing: NextPage<Props> = (props) => {
                       type="text"
                       placeholder="Enter your Name"
                       width={'250'}
+                      bgColor="white"
                     />
 
                     <Input
@@ -82,27 +84,37 @@ const Landing: NextPage<Props> = (props) => {
                       size="md"
                       type="date"
                       width={'350'}
+                      bgColor="white"
                       />
 
                     <Input id="userEmail"
                       type="email"
                       placeholder="Enter your email address"
                       width={'250'}
+                      bgColor="white"
                     />
-
-                    <Checkbox >
-                        I agree to the{" "}
-                        <a href="#" className="text-blue-500">
-                          Terms and Conditions
-                        </a>
+                    
+                    <div>
+                      <Checkbox bgColor="white" marginRight={"4"}>
                       </Checkbox>
+                      <span>
+                      I agree to the{" "}
+                          <a href="#" className="text-blue-500">
+                            Terms and Conditions
+                          </a>
+                      </span>
+                    </div>
 
-                      <Checkbox >
+                    <div>
+                      <Checkbox bgColor="white" marginRight={"4"}>
+                      </Checkbox>
+                      <span>
                       I agree to the{" "}
                       <a href="#" className="text-blue-500">
                         Privacy Policy
                         </a>
-                      </Checkbox>
+                      </span>
+                    </div>
 
                     </Stack>
                   </Box>
