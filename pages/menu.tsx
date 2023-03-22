@@ -20,6 +20,7 @@ import {
   Stack,
   Text,
   Heading,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { Footer } from "./Footer";
 
@@ -31,6 +32,8 @@ type Props = {
 const Landing: NextPage<Props> = (props) => {
 
   const { isConnected } = useAccount();
+
+  const flexDirection = useBreakpointValue({ base: 'column', md: 'row' });
 
   return (
     <>
@@ -55,7 +58,7 @@ const Landing: NextPage<Props> = (props) => {
             bgGradient="linear(to-r, #F6F0EA, #F1DFD1)"
             maxW="container.lg"
             >
-
+{/* 
             <Box bg="bg-surface" borderRadius="lg" p={{ base: "4", md: "6" }}>
 
               <div className="py-1 flex flex-col items-center">
@@ -70,15 +73,28 @@ const Landing: NextPage<Props> = (props) => {
                 </Link>
               </div>             
 
+            </Box> */}
+
+            <Box display="flex" flexDirection={flexDirection} width="100%" alignItems="center" justifyContent="center">
+              <Box margin={"25"}>
+                <Link href="/level1">
+                  <Image src={StartGame} alt="Image 1" boxSize={{ base: '100%', md: '50%' }} />
+                </Link>
+              </Box>
+              <Box margin={"25"}>
+                <Link href="/memory1">
+                  <Image src={ReadBook} alt="Image 2" boxSize={{ base: '100%', md: '50%' }} />
+                </Link>
+              </Box>
             </Box>
 
-            <Stack justify="center" direction="row" padding={"5"}>
+            {/* <Stack justify="center" direction="row" padding={"5"}>
               {isConnected && (
                 <Link href="/menu">
                   <WallyButton boxShadow='xl' mx={6}>Get Started</WallyButton>
                 </Link>
               )}
-            </Stack>
+            </Stack> */}
           </Container>
         </Box>
       </Box>
