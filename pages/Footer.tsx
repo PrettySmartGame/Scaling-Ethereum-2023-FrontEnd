@@ -13,7 +13,7 @@ export const Footer = () => (
     as="footer"
     role="contentinfo"
     py={{ base: "8", md: "8" }}
-    w={"300px"}
+    w={"500px"}
   >
     <Stack spacing={{ base: "4", md: "5" }} justify="space-between">
       <Stack justify="space-between" direction="row" align="center">

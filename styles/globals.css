@@ -2,7 +2,7 @@
   max-width: 860px;
   margin: 40px auto;
 }
-button {
+/* button {
   background: none;
   border: 2px solid #fff;
   padding: 6px 12px;
@@ -15,7 +15,7 @@ button {
 button:hover {
   background: #c23866;
   color: #fff;
-}
+} */
 .card-grid {
   margin-top: 40px;
   display: grid;
@@ -23,39 +23,97 @@ button:hover {
   grid-gap: 20px;
 }
 
+/*Wally button green shadow option */
+/* .button-1 {
+  width: 140px;
+  height: 45px;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: #000;
+  background-color: #fff;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.button-1:hover {
+  background-color: #2ee59d;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+} */
+
+/*eth colour theme button*/
+.button-2 {
+  width: 160px;
+  height: 45px;
+  background-color: #9ae6b4;
+  color: #747369;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin: 1rem;
+  padding: 0.5rem;
+  border: 3px solid #fed7d7;
+  border-radius: 0.5rem;
+  position: relative;
+  top: 0;
+  transition: all 300ms ease-in-out;
+  box-shadow: 0 0.6em #feb2b2, 0 0.9em rgba(0, 0, 0, 0.4);
+}
+.button-2:hover {
+  background: #fed7d7;
+}
+
+.button-2:hover {
+  top: 0.2em;
+  box-shadow: 0 0.4em #feb2b2, 0 0.7em rgba(0, 0, 0, 0.4);
+}
+
+.button-2:active {
+  top: 0.4em;
+  box-shadow: 0 0.2em #feb2b2, 0 0.5em rgba(0, 0, 0, 0.4);
+}
 
 /* ************************************** */
-  
-  .card {
-    position: relative;
-  }
-  .card img {
-    width: 100%;
-    display: block;
-    border: 2px solid #fff;
-    border-radius: 6px;
-  }
-  
-  /* front of card - the picture */
-  .card .front {
-    transform: rotateY(90deg);
-    transition: all ease-in 0.2s;
-    position: absolute;
-  }
-  .flipped .front {
-    transform: rotateY(0deg);
-    transition-delay: 0.2s;
-  }
-  
-  /* back of card - cover */
-  .card .back {
-    transition: all ease-in 0.2s;
-    transition-delay: 0.2s;
-  }
-  .flipped .back {
-    transform: rotateY(90deg);
-    transition-delay: 0s;
-  }
 
+.card {
+  position: relative;
+}
+.card img {
+  width: 100%;
+  display: block;
+  border: 2px solid #fff;
+  border-radius: 6px;
+}
 
-  /* ************************************** */
+/* front of card - the picture */
+.card .front {
+  transform: rotateY(90deg);
+  transition: all ease-in 0.2s;
+  position: absolute;
+}
+.flipped .front {
+  transform: rotateY(0deg);
+  transition-delay: 0.2s;
+}
+
+/* back of card - cover */
+.card .back {
+  transition: all ease-in 0.2s;
+  transition-delay: 0.2s;
+}
+.flipped .back {
+  transform: rotateY(90deg);
+  transition-delay: 0s;
+}
+
+/* ************************************** */
