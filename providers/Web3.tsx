@@ -2,7 +2,10 @@ import { useColorMode } from '@chakra-ui/react'
 import { ReactNode } from 'react'
 
 import { RainbowKitProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
-import { Chain, mainnet, polygon, optimism, arbitrum, goerli, polygonMumbai } from 'wagmi/chains';
+import { Chain, mainnet, 
+  polygon, polygonMumbai, 
+  optimism, optimismGoerli, arbitrum, goerli, 
+  gnosis, zkSync, zkSyncTestnet } from 'wagmi/chains';
 import { configureChains, createClient, WagmiConfig } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
@@ -24,7 +27,7 @@ const hyperspaceChain: Chain = {
   },
   rpcUrls: {
     default: {
-      http: ['https://api.hyperspace.node.glif.io/rpc/v0'],
+      http: ['https://rpc.ankr.com/filecoin_testnet'],
     },
   },  
   blockExplorers: {
@@ -33,14 +36,38 @@ const hyperspaceChain: Chain = {
   testnet: true,
 };
 
+const PolygonzkEVMTestnet: Chain = {
+  id: 1442,
+  name: 'Polygon zkEVM Testnet',
+  network: 'zkEVM Testnet',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'zkEVM Testnet',
+    symbol: 'ETH',
+  },
+  rpcUrls: {
+    default: {
+      http: ['https://rpc.public.zkevm-test.net'],
+    },
+  },  
+  blockExplorers: {
+    default: { name: 'zkEVM Testnet', url: 'https://explorer.public.zkevm-test.net' },
+  },
+  testnet: true,
+};
+
 const { chains, provider, webSocketProvider } = configureChains(
   [
-    mainnet,
     polygon,
     polygonMumbai,
     optimism,
-    arbitrum,
+    optimismGoerli,
     goerli,
+    gnosis,
+    zkSync,
+    zkSyncTestnet,
+    hyperspaceChain,
+    PolygonzkEVMTestnet,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
   ],
   [
