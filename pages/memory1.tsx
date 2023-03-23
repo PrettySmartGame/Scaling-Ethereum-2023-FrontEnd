@@ -23,6 +23,7 @@ import {
   Stack,
   Text,
   Heading,
+  Center,
 } from "@chakra-ui/react";
 import { Footer } from "./Footer";
 
@@ -31,31 +32,42 @@ type Props = {
   subHeader: string;
 };
 
+type StepData = {
+  title: string;
+  active: boolean;
+  complete: boolean;
+  urlPath: string;
+};
+
 const Landing: NextPage<Props> = (props) => {
 
   const { isConnected } = useAccount();
 
   const currentStep = 1;
 
-  const step1Data = {
+  const step1Data: StepData = {
     title: "Memory - Identity in Web 3",
     active: currentStep >= 1,
     complete: currentStep > 1,
+    urlPath: "/memory-game"
   };
-  const step2Data = {
+  const step2Data: StepData = {
     title: "Memory - Security",
     active: currentStep >= 2,
     complete: currentStep > 2,
+    urlPath: "/memory-game"
   };
-  const step3Data = {
+  const step3Data : StepData = {
     title: "Memory - Claim Your Tokens",
     active: currentStep >= 3,
     complete: currentStep > 3,
+    urlPath: "/memory-game"
   };
-  const step4Data = {
+  const step4Data: StepData = {
     title: "Memory - Transfer Tokens",
     active: currentStep >= 4,
     complete: currentStep > 4,
+    urlPath: "/memory-game"
   };
 
 
@@ -82,28 +94,16 @@ const Landing: NextPage<Props> = (props) => {
             bgGradient="linear(to-r, #F6F0EA, #F1DFD1)"
             maxW="container.lg"
             >
-
-            <Box bg="bg-surface" borderRadius="lg" p={{ base: "4", md: "6" }}>
-
-              {/* <div className="container-l1 bg-cover bg-center h-screen">
-                <div className="container2-l1 bg-gray-900 bg-opacity-50  h-screen">
-                  <div className="flex flex-col justify-center items-center h-screen">
-                  </div>
-                </div>
-              </div>          */}
-                    <StepElement data={step1Data} />
-                    <StepElement data={step2Data} />
-                    <StepElement data={step3Data} />
-                    <StepElement data={step4Data} />
-
-            </Box>
+              <Center>
+                <Box bg="bg-surface" borderRadius="lg" p={{ base: "4", md: "6" }}>
+                      <StepElement data={step1Data} />
+                      <StepElement data={step2Data} />
+                      <StepElement data={step3Data} />
+                      <StepElement data={step4Data} />
+                </Box>
+              </Center>
 
             <Stack justify="center" direction="row" padding={"5"}>
-              {/* {isConnected && (
-                <Link href="/menu">
-                  <WallyButton boxShadow='xl' mx={6}>Get Started</WallyButton>
-                </Link>
-              )} */}
             </Stack>
           </Container>
         </Box>

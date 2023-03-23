@@ -35,30 +35,6 @@ const Landing: NextPage<Props> = (props) => {
 
   const { isConnected } = useAccount();
 
-  const currentStep = 1;
-
-  const step1Data = {
-    title: "Identity in Web 3",
-    active: currentStep >= 1,
-    complete: currentStep > 1,
-  };
-  const step2Data = {
-    title: "Security",
-    active: currentStep >= 2,
-    complete: currentStep > 2,
-  };
-  const step3Data = {
-    title: "Claim Your Tokens",
-    active: currentStep >= 3,
-    complete: currentStep > 3,
-  };
-  const step4Data = {
-    title: "Transfer Tokens",
-    active: currentStep >= 4,
-    complete: currentStep > 4,
-  };
-
-
   return (
     <>
       <Box maxH="100vh">
@@ -78,7 +54,7 @@ const Landing: NextPage<Props> = (props) => {
           <WallyHeader />
 
           <Container
-            w="100%"
+            maxW="container.lg"
             borderBottomRadius={"xl"}
             bgGradient="linear(to-r, #F6F0EA, #F1DFD1)">
 

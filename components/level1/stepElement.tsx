@@ -8,15 +8,17 @@ import * as badgeFull from "../../assets/badgeFull.png";
 
 import { HStack } from "@chakra-ui/react";
 
-export type ItemData = {
+type StepData = {
     title: string;
     active: boolean;
     complete: boolean;
-  };
+    urlPath: string;
+  };  
 
 type Props = {
-    data: ItemData;
+    data: StepData;
   };
+
 
 export function StepElement({ data }: Props) {
 
@@ -30,7 +32,7 @@ export function StepElement({ data }: Props) {
     const handleClick = (e: any) => {
         e.preventDefault();
         console.log("goToPaint");
-        router.push('/memory-game');
+        router.push(data.urlPath);
     }
 
     if (active) {

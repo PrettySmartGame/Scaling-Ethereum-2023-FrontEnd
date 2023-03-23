@@ -22,6 +22,7 @@ import {
   Stack,
   Text,
   Heading,
+  Center,
 } from "@chakra-ui/react";
 import { Footer } from "./Footer";
 
@@ -81,15 +82,14 @@ const Landing: NextPage<Props> = (props) => {
             bgGradient="linear(to-r, #F6F0EA, #F1DFD1)"
             maxW="container.lg"
             >
-
-            <Box bg="bg-surface" borderRadius="lg" p={{ base: "4", md: "6" }}>
-
-                    <StepElement data={step1Data} />
-                    <StepElement data={step2Data} />
-                    <StepElement data={step3Data} />
-                    <StepElement data={step4Data} />
-
-            </Box>
+            <Center>
+              <Box bg="bg-surface" borderRadius="lg" p={{ base: "4", md: "6" }}>
+                <StepElement data={step1Data} />
+                <StepElement data={step2Data} />
+                <StepElement data={step3Data} />
+                <StepElement data={step4Data} />
+              </Box>
+            </Center>
 
             <Stack justify="center" direction="row" padding={"5"}>
               {isConnected && (

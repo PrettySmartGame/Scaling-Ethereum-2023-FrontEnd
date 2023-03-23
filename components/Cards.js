@@ -74,8 +74,8 @@ export const  MemoryCards = () => {
 
   return (
     <div className="AppCard">
-      <h1>Magic Match</h1>
-      <button onClick={shuffleCards}>New Game</button>
+      {/* <h1>Magic Match</h1>
+      <button onClick={shuffleCards}>New Game</button> */}
 
       <div className="card-grid">
         {cards.map(card => (

@@ -58,22 +58,6 @@ const Landing: NextPage<Props> = (props) => {
             bgGradient="linear(to-r, #F6F0EA, #F1DFD1)"
             maxW="container.lg"
             >
-{/* 
-            <Box bg="bg-surface" borderRadius="lg" p={{ base: "4", md: "6" }}>
-
-              <div className="py-1 flex flex-col items-center">
-                <Link href="/level1">
-                  <Image src={StartGame} alt="StartGame" />
-                </Link>
-              </div>
-
-              <div className="py-1 flex flex-col items-center">
-                <Link href="/memory1">
-                  <Image src={ReadBook} alt="ReadBook" />
-                </Link>
-              </div>             
-
-            </Box> */}
 
             <Box display="flex" flexDirection={flexDirection} width="100%" alignItems="center" justifyContent="center">
               <Box margin={"25"}>
@@ -88,13 +72,6 @@ const Landing: NextPage<Props> = (props) => {
               </Box>
             </Box>
 
-            {/* <Stack justify="center" direction="row" padding={"5"}>
-              {isConnected && (
-                <Link href="/menu">
-                  <WallyButton boxShadow='xl' mx={6}>Get Started</WallyButton>
-                </Link>
-              )}
-            </Stack> */}
           </Container>
         </Box>
       </Box>

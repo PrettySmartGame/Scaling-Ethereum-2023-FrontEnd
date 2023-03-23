@@ -22,6 +22,7 @@ import {
   Stack,
   Text,
   Heading,
+  Center,
 } from "@chakra-ui/react";
 import { Footer } from "./Footer";
 
@@ -77,19 +78,17 @@ const Landing: NextPage<Props> = (props) => {
           <WallyHeader />
 
           <Container
-            w="100%"
+            maxW="container.lg"
             borderBottomRadius={"xl"}
             bgGradient="linear(to-r, #F6F0EA, #F1DFD1)">
-
-            <Box bg="bg-surface" borderRadius="lg" p={{ base: "4", md: "6" }}>
-
-                    <StepElement data={step1Data} />
-                    <StepElement data={step2Data} />
-                    <StepElement data={step3Data} />
-                    <StepElement data={step4Data} />
-
-            </Box>
-
+              <Center>
+                <Box bg="bg-surface" borderRadius="lg" p={{ base: "4", md: "6" }}>
+                  <StepElement data={step1Data} />
+                  <StepElement data={step2Data} />
+                  <StepElement data={step3Data} />
+                  <StepElement data={step4Data} />
+                </Box>
+              </Center>
             <Stack justify="center" direction="row" padding={"5"}>
               {isConnected && (
                 <Link href="/level1-nft-collection">

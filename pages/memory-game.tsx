@@ -58,7 +58,7 @@ const Landing: NextPage<Props> = (props) => {
           <WallyHeader />
 
           <Container
-            w="100%"
+            maxW="container.lg"
             borderBottomRadius={"xl"}
             bgGradient="linear(to-r, #F6F0EA, #F1DFD1)">
 
