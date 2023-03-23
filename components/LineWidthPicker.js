@@ -1,4 +1,4 @@
-import React from 'react';
+import { Box, Select, Tag, TagLabel } from "@chakra-ui/react";
 
 const LineWidthPicker = ({ lineWidth, setLineWidth }) => {
   const lineWidthOptions = [2, 5, 10, 15, 20];
@@ -8,16 +8,25 @@ const LineWidthPicker = ({ lineWidth, setLineWidth }) => {
   };
 
   return (
-    <div>
-      <label htmlFor="lineWidth">Line width: </label>
-      <select id="lineWidth" value={lineWidth} onChange={handleChange}>
+    <Box padding={"13px"}>
+      <Tag>
+        <TagLabel borderRadius={"3px"} htmlFor="lineWidth" minH={"30px"}>
+          Line width:{" "}
+        </TagLabel>
+      </Tag>
+      <Select
+        maxWidth={"100px"}
+        id="lineWidth"
+        value={lineWidth}
+        onChange={handleChange}
+      >
         {lineWidthOptions.map((width) => (
           <option key={width} value={width}>
             {width}px
           </option>
         ))}
-      </select>
-    </div>
+      </Select>
+    </Box>
   );
 };
 

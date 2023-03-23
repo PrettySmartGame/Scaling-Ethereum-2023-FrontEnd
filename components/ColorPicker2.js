@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ChromePicker } from 'react-color';
+import React, { useState } from "react";
+import { ChromePicker } from "react-color";
 
 const ColorPicker = ({ color, setColor }) => {
   const [displayPicker, setDisplayPicker] = useState(false);
@@ -14,7 +14,15 @@ const ColorPicker = ({ color, setColor }) => {
 
   return (
     <div>
-      <div onClick={handleClick} style={{ backgroundColor: color, width: '36px', height: '14px', cursor: 'pointer' }} />
+      <div
+        onClick={handleClick}
+        style={{
+          backgroundColor: color,
+          width: "89px",
+          height: "14px",
+          cursor: "pointer",
+        }}
+      />
       {displayPicker && (
         <div>
           <ChromePicker color={color} onChange={handleColorChange} />

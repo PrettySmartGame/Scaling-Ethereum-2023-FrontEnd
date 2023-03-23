@@ -1,5 +1,5 @@
-import React from 'react';
-import { ChromePicker } from 'react-color';
+import { Box } from "@chakra-ui/react";
+import { ChromePicker } from "react-color";
 
 const ColorPicker = ({ color, setColor }) => {
   const handleChangeComplete = (color) => {
@@ -7,9 +7,13 @@ const ColorPicker = ({ color, setColor }) => {
   };
 
   return (
-    <div>
-      <ChromePicker color={color} onChangeComplete={handleChangeComplete} />
-    </div>
+    <Box padding={"13px"}>
+      <ChromePicker
+        color={color}
+        onChangeComplete={handleChangeComplete}
+        width={"400px"}
+      />
+    </Box>
   );
 };
 

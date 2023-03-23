@@ -1,36 +1,19 @@
 import type { NextPage } from "next";
 import { useAccount } from "wagmi";
 
-import React, { useState } from 'react';
+import { useState } from "react";
 
 import { WallyButton } from "../components/WallyButton.js";
-import  { WallyHeader } from "../components/WallyHeader.js";
+import { WallyHeader } from "../components/WallyHeader.js";
 
-import * as StartGame from "../assets/StartGame.png";
-import * as ReadBook from "../assets/ReadBook.png";
+import Link from "next/link";
 
-import Image from "next/image";
-import Link from 'next/link';
+import PaintCanvas from "../components/PaintCanvas";
+import ColorPicker from "../components/ColorPicker";
+import ToolPicker from "../components/ToolPicker";
+import LineWidthPicker from "../components/LineWidthPicker";
 
-import { StepElement } from "../components/level1/stepElement";
-
-import PaintCanvas from '../components/PaintCanvas';
-import ColorPicker from '../components/ColorPicker';
-import ToolPicker from '../components/ToolPicker';
-import LineWidthPicker from '../components/LineWidthPicker';
-
-import {
-  Box,
-  Button,
-  Container,
-  VStack,
-  HStack,
-  StackDivider,
-  Stack,
-  Text,
-  Heading,
-} from "@chakra-ui/react";
-import { Footer } from "./Footer";
+import { Box, Container, Stack } from "@chakra-ui/react";
 
 type Props = {
   header: string;
@@ -38,21 +21,21 @@ type Props = {
 };
 
 const Landing: NextPage<Props> = (props) => {
-
   const { isConnected } = useAccount();
 
-  const [color, setColor] = useState('#000000');
+  const [color, setColor] = useState("#000000");
   const [lineWidth, setLineWidth] = useState(5);
-  const [tool, setTool] = useState('pen');
-  const [imageUrl, setImageUrl] = useState('../assets/web3Identity.png');
-
+  const [tool, setTool] = useState("pen");
+  const [imageUrl, setImageUrl] = useState("../assets/web3Identity.png");
 
   return (
     <>
       <Box maxH="100vh">
-
         <Box
-          h="100vh"
+          maxHeight={"80%"}
+          display={"flex"}
+          flexDirection={"column"}
+          alignItems={"center"}
           as="section"
           pt={{ base: "4", md: "8" }}
           pb={{ base: "12", md: "24" }}
@@ -62,53 +45,57 @@ const Landing: NextPage<Props> = (props) => {
             "linear(to-b, orange.100, purple.300)",
           ]}
         >
-
           <WallyHeader />
 
           <Container
-            w="100%"
+            maxW={"container.lg"}
+            bg="bg-surface"
+            borderRadius="lg"
+            p={{ base: "4", md: "6" }}
             borderBottomRadius={"xl"}
-            bgGradient="linear(to-r, #F6F0EA, #F1DFD1)">
-
-            <Box bg="bg-surface" borderRadius="lg" p={{ base: "4", md: "6" }}>
-
-            <div className="flex">
-        <div>
-          <PaintCanvas
-                width={470}
-                height={500}
+            bgGradient="linear(to-r, #F6F0EA, #F1DFD1)"
+          >
+            <Box className="flex" display={"flex"} flexDirection={"column"}>
+              <PaintCanvas
+                width={"200px"}
+                height={"100px"}
                 color={color}
                 lineWidth={lineWidth}
                 tool={tool}
                 imageUrl={imageUrl} // Pass the imageUrl prop
               />
-        </div>
-        <div className="w-1/2 flex flex-col">
-          <div className="flex-row my-2">
-            <ToolPicker tool={tool} setTool={setTool} />
-          </div>
-          <div className="flex-row my-2">
-            <LineWidthPicker lineWidth={lineWidth} setLineWidth={setLineWidth} />
-          </div>
-          <div className="flex-row my-2">
-            <ColorPicker color={color} setColor={setColor} />
-          </div>
-        </div>
-      </div>
 
+              <Box
+                display={"flex"}
+                flexDirection={"column"}
+                justifyContent={"space-between"}
+              >
+                <ToolPicker tool={tool} setTool={setTool} />
+
+                <div className="flex-row my-2">
+                  <LineWidthPicker
+                    lineWidth={lineWidth}
+                    setLineWidth={setLineWidth}
+                  />
+                </div>
+                <div className="flex-row my-2">
+                  <ColorPicker color={color} setColor={setColor} />
+                </div>
+              </Box>
             </Box>
 
             <Stack justify="center" direction="row" padding={"5"}>
               {isConnected && (
                 <Link href="/rewards1">
-                  <WallyButton boxShadow='xl' mx={6}>Mint</WallyButton>
+                  <WallyButton boxShadow="xl" mx={6}>
+                    Mint
+                  </WallyButton>
                 </Link>
               )}
             </Stack>
           </Container>
         </Box>
       </Box>
-
     </>
   );
 };

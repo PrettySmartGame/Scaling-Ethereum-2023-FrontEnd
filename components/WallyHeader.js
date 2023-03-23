@@ -1,30 +1,25 @@
-import React from 'react'
 import {
-    Box,
-    Button,
-    Container,
-    VStack,
-    HStack,
-    StackDivider,
-    Stack,
-    Text,
-    Heading,
-    Center,
-  } from "@chakra-ui/react";
+  Box,
+  Container,
+  VStack,
+  HStack,
+  StackDivider,
+  Stack,
+  Text,
+  Heading,
+  Center,
+} from "@chakra-ui/react";
 
-  import { ConnectButton } from "@rainbow-me/rainbowkit";
-  
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+
 export const WallyHeader = () => (
-
-    <Container
+  <Container
     maxW="container.lg"
     bgGradient="linear(to-r, gray.300, yellow.400, pink.200)"
     borderTopRadius={"2xl"}
-    padding={"30"} >
-    <VStack
-      divider={<StackDivider borderColor="gray.200" />}
-      spacing={4}
-    >
+    padding={"30"}
+  >
+    <VStack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
       <Box>
         <Stack
           spacing="4"
@@ -35,6 +30,7 @@ export const WallyHeader = () => (
             <Box>
               <HStack>
                 <Heading
+                  paddingBottom={"3"}
                   as="h1"
                   size="2xl"
                   noOfLines={1}
@@ -53,7 +49,6 @@ export const WallyHeader = () => (
               >
                 A educational game like no other
               </Text>
-
             </Box>
           </HStack>
         </Stack>
@@ -65,7 +60,6 @@ export const WallyHeader = () => (
       </Box>
     </VStack>
   </Container>
+);
 
-    )
-
-export default WallyHeader
+export default WallyHeader;
