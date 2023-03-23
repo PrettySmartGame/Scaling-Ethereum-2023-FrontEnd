@@ -1,5 +1,11 @@
 import type { NextPage } from "next";
-import { useAccount } from "wagmi";
+
+import { useAccount, 
+        useNetwork,
+        useContract,
+        useContractRead,
+        useSigner,
+        useWebSocketProvider } from "wagmi";
 
 import { WallyHeader } from "../components/WallyHeader.js";
 
@@ -12,15 +18,34 @@ import { Box, Center, Container, Stack } from "@chakra-ui/react";
 import Footer from "./Footer";
 import WallyButton from "../components/WallyButton.js";
 
+import { useEffect } from 'react';
+import { USER_MANAGEMENT_CONTRACT_MUMBAI } from "../utils/constants";
+
+import USER_MANAGEMENT_ABI from "../assets/contracts/WallyWalletUsers.json";
+
 type Props = {
   header: string;
   subHeader: string;
 };
 
 const Landing: NextPage<Props> = (props) => {
-  const { isConnected } = useAccount();
+
+  const { isConnected, address } = useAccount();
+  const { chain, chains } = useNetwork();
+  const { data: signer } = useSigner();
 
   const router = useRouter()
+
+  const { data } = useContractRead({
+    address: USER_MANAGEMENT_CONTRACT_MUMBAI,
+    abi: USER_MANAGEMENT_ABI,
+    functionName: 'doesUserExist',
+    args: [address],
+    onSuccess(data) {
+      console.log('Success', data)
+    },    
+  });  
+
 
   const handleClick = (e: any) => {
     console.log("clicked") ;
@@ -29,6 +54,21 @@ const Landing: NextPage<Props> = (props) => {
     router.push('/explore');
 
   };
+
+  useEffect(() => {
+     if(isConnected) {
+      console.log("check if user exist in the SC");
+      console.log("address", address);
+      console.log("chain:", chain);
+      console.log(data);
+      if(data) {
+        console.log("user exist in the SC");
+        router.push('/menu');
+      } 
+
+      }
+     }
+   , [isConnected]); 
 
   return (
     <>

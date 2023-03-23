@@ -79,13 +79,13 @@ const Landing: NextPage<Props> = (props) => {
                       bgColor="white"
                     />
 
-                    <Input
+                    {/* <Input
                       placeholder="Date of Birth"
                       size="md"
                       type="date"
                       width={'350'}
                       bgColor="white"
-                      />
+                      /> */}
 
                     <Input id="userEmail"
                       type="email"
