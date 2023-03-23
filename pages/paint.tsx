@@ -13,7 +13,10 @@ import ColorPicker from "../components/ColorPicker";
 import ToolPicker from "../components/ToolPicker";
 import LineWidthPicker from "../components/LineWidthPicker";
 
-import { Box, Container, Stack } from "@chakra-ui/react";
+import { Box, 
+        Container, 
+        Stack, 
+        useBreakpointValue, } from "@chakra-ui/react";
 
 type Props = {
   header: string;
@@ -27,6 +30,8 @@ const Landing: NextPage<Props> = (props) => {
   const [lineWidth, setLineWidth] = useState(5);
   const [tool, setTool] = useState("pen");
   const [imageUrl, setImageUrl] = useState("../assets/web3Identity.png");
+
+  const flexDirection = useBreakpointValue({ base: 'column', md: 'row' });
 
   return (
     <>
@@ -55,34 +60,42 @@ const Landing: NextPage<Props> = (props) => {
             borderBottomRadius={"xl"}
             bgGradient="linear(to-r, #F6F0EA, #F1DFD1)"
           >
-            <Box className="flex" display={"flex"} flexDirection={"column"}>
-              <PaintCanvas
-                width={"200px"}
-                height={"100px"}
-                color={color}
-                lineWidth={lineWidth}
-                tool={tool}
-                imageUrl={imageUrl} // Pass the imageUrl prop
-              />
 
-              <Box
-                display={"flex"}
-                flexDirection={"column"}
-                justifyContent={"space-between"}
-              >
-                <ToolPicker tool={tool} setTool={setTool} />
+            <Box display="flex" flexDirection={flexDirection} width="100%" alignItems="center" justifyContent="center">
+              <Box margin={"25"}>
 
-                <div className="flex-row my-2">
-                  <LineWidthPicker
+                <Box maxWidth={"360px"} maxHeight={"480px"}>
+                  <PaintCanvas
+                    width={"360px"}
+                    height={"480px"}
+                    color={color}
                     lineWidth={lineWidth}
-                    setLineWidth={setLineWidth}
+                    tool={tool}
+                    imageUrl={imageUrl} // Pass the imageUrl prop
                   />
-                </div>
-                <div className="flex-row my-2">
+                </Box>
+
+              </Box>
+
+              <Box margin={"25"}>
+
+                <Box maxWidth={"320px"}>
+
+                  <ToolPicker tool={tool} setTool={setTool} />
+
+                  <LineWidthPicker
+                      lineWidth={lineWidth}
+                      setLineWidth={setLineWidth}
+                    />
+
                   <ColorPicker color={color} setColor={setColor} />
-                </div>
+
+                </Box>
+
               </Box>
             </Box>
+
+
 
             <Stack justify="center" direction="row" padding={"5"}>
               {isConnected && (

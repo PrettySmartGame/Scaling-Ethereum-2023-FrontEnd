@@ -62,12 +62,15 @@ const PaintCanvas = ({ width, height, color, lineWidth, tool, imageUrl }) => {
     } else if (tool === "spray") {
       context.globalCompositeOperation = "source-over";
       const sprayRadius = toolLineWidth * 2;
+      const canvasBounds = canvasRef.current.getBoundingClientRect();
+      const x = event.clientX - canvasBounds.left;
+      const y = event.clientY - canvasBounds.top;      
       for (let i = 0; i < 30; i++) {
         const offsetX = Math.random() * sprayRadius * 2 - sprayRadius;
         const offsetY = Math.random() * sprayRadius * 2 - sprayRadius;
         context.fillRect(
-          event.clientX + offsetX,
-          event.clientY + offsetY,
+          x + offsetX,
+          y + offsetY,
           1,
           1
         );
