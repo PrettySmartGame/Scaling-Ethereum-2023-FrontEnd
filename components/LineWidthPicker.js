@@ -1,7 +1,13 @@
-import { Box, Select, Tag, TagLabel } from "@chakra-ui/react";
+import { Box, 
+        Select, 
+        Tag, 
+        TagLabel, 
+        FormControl,
+        FormLabel,
+        } from "@chakra-ui/react";
 
 const LineWidthPicker = ({ lineWidth, setLineWidth }) => {
-  const lineWidthOptions = [2, 5, 10, 15, 20];
+  const lineWidthOptions = [1, 2, 4, 6, 10, 14, 18];
 
   const handleChange = (event) => {
     setLineWidth(parseInt(event.target.value, 10));
@@ -9,23 +15,22 @@ const LineWidthPicker = ({ lineWidth, setLineWidth }) => {
 
   return (
     <Box padding={"13px"}>
-      <Tag>
-        <TagLabel borderRadius={"3px"} htmlFor="lineWidth" minH={"30px"}>
-          Line width:{" "}
-        </TagLabel>
-      </Tag>
-      <Select
-        maxWidth={"100px"}
-        id="lineWidth"
-        value={lineWidth}
-        onChange={handleChange}
-      >
-        {lineWidthOptions.map((width) => (
-          <option key={width} value={width}>
-            {width}px
-          </option>
-        ))}
-      </Select>
+      <FormControl>
+        <FormLabel>Line width:{" "}</FormLabel>
+        <Select
+          backgroundColor={"white"}
+          maxWidth={"100px"}
+          id="lineWidth"
+          value={lineWidth}
+          onChange={handleChange}
+        >
+          {lineWidthOptions.map((width) => (
+            <option key={width} value={width}>
+              {width}px
+            </option>
+          ))}
+        </Select>
+      </FormControl>
     </Box>
   );
 };
