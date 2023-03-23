@@ -20,7 +20,6 @@ import WallyButton from "../components/WallyButton.js";
 
 import { useEffect } from 'react';
 import { USER_MANAGEMENT_CONTRACT_MUMBAI } from "../utils/constants";
-
 import USER_MANAGEMENT_ABI from "../assets/contracts/WallyWalletUsers.json";
 
 type Props = {
@@ -36,7 +35,7 @@ const Landing: NextPage<Props> = (props) => {
 
   const router = useRouter()
 
-  const { data } = useContractRead({
+  const { data: doesUserExistCall , isError, isLoading} = useContractRead({
     address: USER_MANAGEMENT_CONTRACT_MUMBAI,
     abi: USER_MANAGEMENT_ABI,
     functionName: 'doesUserExist',
@@ -48,11 +47,8 @@ const Landing: NextPage<Props> = (props) => {
 
 
   const handleClick = (e: any) => {
-    console.log("clicked") ;
     e.preventDefault();
-    console.log("goToPaint");
     router.push('/explore');
-
   };
 
   useEffect(() => {
@@ -60,8 +56,9 @@ const Landing: NextPage<Props> = (props) => {
       console.log("check if user exist in the SC");
       console.log("address", address);
       console.log("chain:", chain);
-      console.log(data);
-      if(data) {
+      let result = doesUserExistCall;
+      console.log(result);
+      if(result) {
         console.log("user exist in the SC");
         router.push('/menu');
       } 

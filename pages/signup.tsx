@@ -1,5 +1,13 @@
 import type { NextPage } from "next";
-import { useAccount } from "wagmi";
+import { useAccount, 
+  useNetwork,
+  useContract,
+  useContractRead,
+  useSigner,
+  useContractWrite,
+  useWebSocketProvider,
+  usePrepareContractWrite,
+  useProvider } from "wagmi";
 
 import { WallyButton } from "../components/WallyButton.js";
 import  { WallyHeader } from "../components/WallyHeader.js";
@@ -9,6 +17,7 @@ import * as BlockchainGame from "../assets/blockchaingame.png";
 
 import Image from "next/image";
 import Link from 'next/link';
+import { useRouter } from 'next/router'
 
 import {
   Box,
@@ -25,7 +34,12 @@ import {
   InputGroup,
   Checkbox,
 } from "@chakra-ui/react";
-import { Footer } from "./Footer";
+
+import { useEffect } from 'react';
+
+import { USER_MANAGEMENT_CONTRACT_MUMBAI } from "../utils/constants";
+import USER_MANAGEMENT_ABI from "../assets/contracts/WallyWalletUsers.json";
+
 
 type Props = {
   header: string;
@@ -34,7 +48,70 @@ type Props = {
 
 const Landing: NextPage<Props> = (props) => {
 
-  const { isConnected } = useAccount();
+  const { isConnected, address } = useAccount();
+  const { chain, chains } = useNetwork();
+  const { data: signer } = useSigner();
+
+  const router = useRouter()
+
+  // const { config } = usePrepareContractWrite({
+  //   address: USER_MANAGEMENT_CONTRACT_MUMBAI,
+  //   abi: USER_MANAGEMENT_ABI,
+  //   functionName: 'registerUser',
+  //   args: ["name", "email", address, 0, 0],
+  // })  
+  // const { data: registerUserCall, isLoading, isSuccess, write } = useContractWrite(config)
+
+  const provider = useWebSocketProvider();
+
+  const contract = useContract({
+    address: USER_MANAGEMENT_CONTRACT_MUMBAI,
+    abi: USER_MANAGEMENT_ABI,
+    signerOrProvider: signer,
+  })
+
+  const registerUserCall = async () => {
+    contract?.registerUser("name", "email", address, 0, 0, {
+      maxPriorityFeePerGas: await provider?.send(
+        "eth_maxPriorityFeePerGas",
+        []
+      ),
+    });
+  };
+
+  // const { data: getUserInfoData , isError, isLoading} = useContractRead({
+  //   address: USER_MANAGEMENT_CONTRACT_MUMBAI,
+  //   abi: USER_MANAGEMENT_ABI,
+  //   functionName: 'getUserInfo',
+  //   args: [address],
+  //   onSuccess(data) {
+  //     console.log('Success', data)
+  //   },    
+  // });  
+
+  useEffect(() => {
+    if(isConnected) {
+     console.log("check if user exist in the SC");
+     console.log("address", address);
+     console.log("chain:", chain);
+
+     }
+    }
+  , [isConnected]);   
+
+  const handleClick = (e: any) => {
+    e.preventDefault();
+    console.log("clicked");
+    // router.push('/menu');
+    //registerUserCall;
+    //console.log(registerUserCall);
+    console.log("call 01");
+    registerUserCall();
+    console.log("call 02");
+    //console.log(getUserInfoData);
+    console.log("call 03");
+  };
+
 
   return (
     <>
@@ -126,9 +203,7 @@ const Landing: NextPage<Props> = (props) => {
 
             <Stack justify="center" direction="row" padding={"5"}>
               {isConnected && (
-                <Link href="/menu">
-                  <WallyButton boxShadow='xl' mx={6}>Get Started</WallyButton>
-                </Link>
+                  <WallyButton boxShadow='xl' mx={6} onClick={handleClick}>Get Started</WallyButton>
               )}
             </Stack>
           </Container>
