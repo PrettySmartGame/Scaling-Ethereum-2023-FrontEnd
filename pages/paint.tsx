@@ -20,10 +20,14 @@ import { Box,
         useBreakpointValue,
         Center } from "@chakra-ui/react";
 
+import { Web3Storage } from 'web3.storage';
+
 type Props = {
   header: string;
   subHeader: string;
 };
+
+export const WEB3STORAGE_API_KEY = process.env.WEB3STORAGE_API_KEY || "";
 
 const Paint: NextPage<Props> = (props) => {
   const { isConnected } = useAccount();
@@ -37,13 +41,25 @@ const Paint: NextPage<Props> = (props) => {
 
   const canvasRef = useRef(null);
   
-  const readImageAsPNG = () => {
+  const getFileURL = (cid: any) => {
+    return `https://${cid}.ipfs.dweb.link/wallywalletpaint.png`;
+  };
+  
+  const readImageAsPNG = async () => {
     const canvas = document.getElementById('myCanvas');
     if (canvas) {
       const pngDataUrl = canvas.toDataURL('image/png');
-      console.log(pngDataUrl);
 
-      // Do something with the PNG data URL, like displaying the image or uploading it to a server
+      const response = await fetch(pngDataUrl);
+      const blob = await response.blob();
+      const file = new File([blob], 'wallywalletpaint.png', { type: 'image/png' });
+      const client = new Web3Storage({ token: `${process.env.NEXT_PUBLIC_WEB3_STORAGE_API_KEY!}` })
+
+      const files = [file];
+      const cid = await client.put(files);
+      console.log(cid);
+      console.log(getFileURL(cid));
+      return cid;
     }
   };
 
