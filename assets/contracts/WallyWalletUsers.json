@@ -15,108 +15,6 @@
 	{
 		"inputs": [
 			{
-				"internalType": "string",
-				"name": "_name",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_email",
-				"type": "string"
-			},
-			{
-				"internalType": "address",
-				"name": "_walletAddress",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_paintLevel",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_memoryLevel",
-				"type": "uint256"
-			}
-		],
-		"name": "registerUser",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_walletAddress",
-				"type": "address"
-			},
-			{
-				"internalType": "string",
-				"name": "_newName",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_newEmail",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_paintLevel",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_memoryLevel",
-				"type": "uint256"
-			}
-		],
-		"name": "updateUser",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_walletAddress",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_memoryLevel",
-				"type": "uint256"
-			}
-		],
-		"name": "updateUserMemoryLevel",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_walletAddress",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_paintLevel",
-				"type": "uint256"
-			}
-		],
-		"name": "updateUserPaintlevel",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
 				"internalType": "address",
 				"name": "_walletAddress",
 				"type": "address"
@@ -162,9 +60,126 @@
 				"internalType": "uint256",
 				"name": "memoryLevel",
 				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "dob",
+				"type": "string"
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_email",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "_walletAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_paintLevel",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_memoryLevel",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_dob",
+				"type": "string"
+			}
+		],
+		"name": "registerUser",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_walletAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "_newName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_newEmail",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_paintLevel",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_memoryLevel",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_newDob",
+				"type": "string"
+			}
+		],
+		"name": "updateUser",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_walletAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_memoryLevel",
+				"type": "uint256"
+			}
+		],
+		"name": "updateUserMemoryLevel",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_walletAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_paintLevel",
+				"type": "uint256"
+			}
+		],
+		"name": "updateUserPaintlevel",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	}
 ]
