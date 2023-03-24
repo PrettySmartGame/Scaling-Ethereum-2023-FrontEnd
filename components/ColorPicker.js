@@ -11,7 +11,7 @@ const ColorPicker = ({ color, setColor }) => {
       <ChromePicker
         color={color}
         onChangeComplete={handleChangeComplete}
-        width={"230px"}
+        width={"260px"}
       />
     </Box>
   );

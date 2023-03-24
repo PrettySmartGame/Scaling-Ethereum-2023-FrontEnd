@@ -30,8 +30,8 @@ const ToolPicker = ({ tool, setTool }) => {
               backgroundColor: tool === t.name ? "lightgray" : "gray",
               color: tool === t.name ? "blue" : "black",
               margin: "6px",
-              width: "45px",
-              height: "45px",
+              width: "50px",
+              height: "50px",
               borderRadius: "5px",
               marginBottom: "8px",
             }}

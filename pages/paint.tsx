@@ -13,10 +13,13 @@ import ColorPicker from "../components/ColorPicker";
 import ToolPicker from "../components/ToolPicker";
 import LineWidthPicker from "../components/LineWidthPicker";
 
+import ReactAudioPlayer from "react-audio-player";
+
 import { Box, 
         Container, 
         Stack, 
-        useBreakpointValue, } from "@chakra-ui/react";
+        useBreakpointValue,
+        Center } from "@chakra-ui/react";
 
 type Props = {
   header: string;
@@ -77,18 +80,28 @@ const Landing: NextPage<Props> = (props) => {
 
               </Box>
 
-              <Box margin={"25"}>
+              <Box margin={"15"}>
 
                 <Box maxWidth={"320px"}>
+                  <Stack>
 
-                  <ToolPicker tool={tool} setTool={setTool} />
+                    <ToolPicker tool={tool} setTool={setTool} />
 
-                  <LineWidthPicker
-                      lineWidth={lineWidth}
-                      setLineWidth={setLineWidth}
+                    <LineWidthPicker
+                        lineWidth={lineWidth}
+                        setLineWidth={setLineWidth}
+                      />
+
+                    <ColorPicker color={color} setColor={setColor} />
+
+                    <ReactAudioPlayer
+                      src="../assets/step1_IdentityInWeb3.ogg"
+                      autoPlay={true}
+                      controls
+                      onPlay={(e) => console.log("onPlay")}
                     />
 
-                  <ColorPicker color={color} setColor={setColor} />
+                  </Stack>
 
                 </Box>
 
