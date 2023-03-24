@@ -66,8 +66,8 @@ const Landing: NextPage<Props> = (props) => {
 
                 <Box maxWidth={"360px"} maxHeight={"480px"}>
                   <PaintCanvas
-                    width={"360px"}
-                    height={"480px"}
+                    width={"360"}
+                    height={"480"}
                     color={color}
                     lineWidth={lineWidth}
                     tool={tool}
