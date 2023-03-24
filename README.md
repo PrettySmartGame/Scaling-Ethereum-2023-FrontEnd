@@ -1,10 +1,16 @@
 # Wally-Wallet 	🤖
-### Full Stack Blockchain Development ✨
-<p> Scalling Ethereum hackathon 2023</p>
-<p>Wally Wallet is an educational game designed for families and young children to learn about web3 through play. It follows a simple flow so even the younger users can participate and have a seamless experience with web3 infrastructures</p>
+### Scaling Ethereum hackathon 2023 ✨ 
+Full Stack Blockchain Development 
 
+<p>With Wally Wallet, children can learn about these complex Web3 concepts in a way that is both engaging and approachable. Through our platform, children will gain a better understanding of the future of the internet, blockchain technology, and cryptocurrency. It follows a simple flow so even the younger users can participate and have a seamless experience with web3 infrastructures. 
 
-How it's made 🛠:
+Our dApp covers the 4 following concepts of web3 : </p>
+* Identity
+* Security
+* Claims your token
+* Transfer your token
+
+# How it's made 🛠:
 The front end is built using ReactJs/typescript and NextJS.We used Wagmi and Ether.js for web3 integration. This allowed us to interact with our deployed smart contract from our front-end using Wagmi React Hooks.
 
 🎨 We used Chakra UI as the main UI library for a consistent feeling . We overrided some theme with CSS files when needed. We used React audio player for the audio integration.
@@ -15,12 +21,12 @@ Use IPFS to store images to store images & user data to keep the game as decentr
 
 The smart contracts are deployed on Polygon Mumbai Testnet
 The smart contract stores holds the following functions : Ex - make transactions etc... [ guys you need to fill up here what kind of functions the smart contract have ].
-What we learned? 
 
-* Create, compile & deploy a smart contract to the Polygon Mumbai testnet using Hardhat.
+#### What we learned / the challenges we faced to scale on ethereum: 
+* Create, compile & deploy a smart contract to all the L2 listed below👇 .
 * Create, compile and deploy a Subgraph to The Graph's Hosted Service.
 * Query your Subgraph from your front-end using GraphQL to display blockchain & ipfs data.
-* Learn how translate Web3 requierement into a web2 UI so any users can have a great experience.
+* Learned how to translate Web3 requierements into a web2 UI "feels like" so all users can have a great learning experience.
 
 # 🎥 Demo links:
 [Workshop Presentation Slides](https://www.canva.com/design/DAFcTRwa1Z4/GT_79aI7fAOFwPSC54a9Yw/view?utm_content=DAFcTRwa1Z4&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink
@@ -121,3 +127,7 @@ npm run dev
 * Open http://localhost:3000
 
 ---
+
+
+
+
