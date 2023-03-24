@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
 import { useAccount } from "wagmi";
-
-import { useState } from "react";
+import React, { useRef, useState } from 'react';
 
 import { WallyButton } from "../components/WallyButton.js";
 import { WallyHeader } from "../components/WallyHeader.js";
@@ -26,7 +25,7 @@ type Props = {
   subHeader: string;
 };
 
-const Landing: NextPage<Props> = (props) => {
+const Paint: NextPage<Props> = (props) => {
   const { isConnected } = useAccount();
 
   const [color, setColor] = useState("#000000");
@@ -35,6 +34,25 @@ const Landing: NextPage<Props> = (props) => {
   const [imageUrl, setImageUrl] = useState("../assets/web3Identity.png");
 
   const flexDirection = useBreakpointValue({ base: 'column', md: 'row' });
+
+  const canvasRef = useRef(null);
+  
+  const readImageAsPNG = () => {
+    const canvas = document.getElementById('myCanvas');
+    if (canvas) {
+      const pngDataUrl = canvas.toDataURL('image/png');
+      console.log(pngDataUrl);
+
+      // Do something with the PNG data URL, like displaying the image or uploading it to a server
+    }
+  };
+
+  const handleClick = (e: any) => {
+    e.preventDefault();
+    console.log("clicked");
+    // router.push('/rewards1');
+    readImageAsPNG();
+  };
 
   return (
     <>
@@ -108,16 +126,12 @@ const Landing: NextPage<Props> = (props) => {
               </Box>
             </Box>
 
-
-
             <Stack justify="center" direction="row" padding={"5"}>
               {isConnected && (
-                <Link href="/rewards1">
-                  <WallyButton boxShadow="xl" mx={6}>
-                    Mint
-                  </WallyButton>
-                </Link>
-              )}
+                  <WallyButton boxShadow="xl" mx={6} onClick={handleClick}>
+                  Mint
+                </WallyButton>
+            )}
             </Stack>
           </Container>
         </Box>
@@ -126,4 +140,4 @@ const Landing: NextPage<Props> = (props) => {
   );
 };
 
-export default Landing;
+export default Paint;

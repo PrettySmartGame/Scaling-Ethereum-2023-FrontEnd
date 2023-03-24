@@ -94,6 +94,7 @@ const PaintCanvas = ({ width, height, color, lineWidth, tool, imageUrl }) => {
   return (
     <>
       <canvas
+        id="myCanvas"
         ref={canvasRef}
         width={width}
         height={height}
