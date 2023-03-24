@@ -4,9 +4,6 @@ import { useAccount } from "wagmi";
 import { WallyButton } from "../components/WallyButton.js";
 import  { WallyHeader } from "../components/WallyHeader.js";
 
-import * as StartGame from "../assets/StartGame.png";
-import * as ReadBook from "../assets/ReadBook.png";
-
 import Image from "next/image";
 import Link from 'next/link';
 

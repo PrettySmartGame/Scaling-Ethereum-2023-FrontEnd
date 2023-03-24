@@ -35,7 +35,8 @@ const Paint: NextPage<Props> = (props) => {
   const [color, setColor] = useState("#000000");
   const [lineWidth, setLineWidth] = useState(5);
   const [tool, setTool] = useState("pen");
-  const [imageUrl, setImageUrl] = useState("../assets/web3Identity.png");
+  
+  const [imageUrl, setImageUrl] = useState("../assets/paint/web3Identity.png");
 
   const flexDirection = useBreakpointValue({ base: 'column', md: 'row' });
 

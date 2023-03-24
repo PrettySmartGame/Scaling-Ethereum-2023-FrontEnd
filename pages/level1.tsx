@@ -1,15 +1,7 @@
 import type { NextPage } from "next";
 import { useAccount } from "wagmi";
 
-import { WallyButton } from "../components/WallyButton.js";
 import  { WallyHeader } from "../components/WallyHeader.js";
-
-import * as StartGame from "../assets/StartGame.png";
-import * as ReadBook from "../assets/ReadBook.png";
-
-import Image from "next/image";
-import Link from 'next/link';
-
 import { StepElement } from "../components/level1/stepElement";
 
 
@@ -39,7 +31,7 @@ type StepData = {
   urlPath: string;
 };
 
-const Landing: NextPage<Props> = (props) => {
+const PaintOptions: NextPage<Props> = (props) => {
 
   const { isConnected } = useAccount();
 
@@ -129,4 +121,4 @@ const Landing: NextPage<Props> = (props) => {
   );
 };
 
-export default Landing;
+export default PaintOptions;

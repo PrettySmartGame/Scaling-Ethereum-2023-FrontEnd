@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import Image from "next/image";
 import { useRouter } from 'next/router'
 
-import * as badgeEmpty from "../../assets/badgeEmpty.png";
-import * as badgeFull from "../../assets/badgeFull.png";
+import * as badgeEmpty from "../../assets/app/badgeEmpty.png";
+import * as badgeFull from "../../assets/app/badgeFull.png";
 
 import { HStack } from "@chakra-ui/react";
 

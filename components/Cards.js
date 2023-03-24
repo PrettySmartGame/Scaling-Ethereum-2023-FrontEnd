@@ -3,12 +3,12 @@ import { useState, useEffect } from 'react'
 import SingleCard from './SingleCard'
 
 const cardImages = [
-  { "src": "../assets/helmet-1.png", matched: false },
-  { "src": "../assets/potion-1.png", matched: false },
-  { "src": "../assets/ring-1.png", matched: false },
-  { "src": "../assets/scroll-1.png", matched: false },
-  { "src": "../assets/shield-1.png", matched: false },
-  { "src": "../assets/sword-1.png", matched: false },
+  { "src": "../assets/memory/helmet-1.png", matched: false },
+  { "src": "../assets/memory/potion-1.png", matched: false },
+  { "src": "../assets/memory/ring-1.png", matched: false },
+  { "src": "../assets/memory/scroll-1.png", matched: false },
+  { "src": "../assets/memory/shield-1.png", matched: false },
+  { "src": "../assets/memory/sword-1.png", matched: false },
 ]
 
 export const  MemoryCards = () => {

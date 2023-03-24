@@ -12,8 +12,7 @@ import { useAccount,
 import { WallyButton } from "../components/WallyButton.js";
 import  { WallyHeader } from "../components/WallyHeader.js";
 
-import * as KidsWithTablet from "../assets/KidsWithTablet.png";
-import * as BlockchainGame from "../assets/blockchaingame.png";
+import * as BlockchainGame from "../assets/app/blockchaingame.png";
 
 import Image from "next/image";
 import Link from 'next/link';

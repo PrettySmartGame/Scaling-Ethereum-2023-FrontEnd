@@ -9,7 +9,6 @@ import { useAccount,
 
 import { WallyHeader } from "../components/WallyHeader.js";
 
-import * as BlockchainGame from "../assets/blockchaingame.png";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from 'next/router'
@@ -21,6 +20,8 @@ import WallyButton from "../components/WallyButton.js";
 import { useEffect } from 'react';
 import { USER_MANAGEMENT_CONTRACT_MUMBAI } from "../utils/constants";
 import USER_MANAGEMENT_ABI from "../assets/contracts/WallyWalletUsers.json";
+
+import * as BlockchainGame from "../assets/app/blockchaingame.png";
 
 type Props = {
   header: string;

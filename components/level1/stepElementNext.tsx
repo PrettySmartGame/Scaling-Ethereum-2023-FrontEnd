@@ -5,9 +5,9 @@ import { useRouter } from 'next/router'
 
 import { HStack } from "@chakra-ui/react";
 
-import * as badgeEmpty from "../../assets/badgeEmpty.png";
-import * as badgeFull from "../../assets/badgeFull.png";
-import * as badgeWinner from "../../assets/badgeWinner.png";
+import * as badgeEmpty from "../../assets/app/badgeEmpty.png";
+import * as badgeFull from "../../assets/app/badgeFull.png";
+import * as badgeWinner from "../../assets/app/badgeWinner.png";
 
 export type ItemData = {
     title: string;
