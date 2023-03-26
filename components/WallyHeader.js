@@ -10,10 +10,33 @@ import {
   Center,
 } from "@chakra-ui/react";
 
+import { useAccount, 
+  useNetwork,
+  useContract,
+  useContractRead,
+  useSigner,
+  useWebSocketProvider } from "wagmi";
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/router'
+
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
-export const WallyHeader = () => (
-  <Container
+export const WallyHeader = () => {
+
+  const router = useRouter()
+  const { isConnected, address } = useAccount();
+
+  useEffect(() => {
+    if(!isConnected) {
+      router.push('/');
+     }
+    }
+  , [isConnected]); 
+
+  return (
+    <>
+    <Container
     maxW="container.lg"
     bgGradient="linear(to-r, gray.300, yellow.400, pink.200)"
     borderTopRadius={"2xl"}
@@ -60,6 +83,9 @@ export const WallyHeader = () => (
       </Box>
     </VStack>
   </Container>
-);
+  </>
+  );
+
+};
 
 export default WallyHeader;

@@ -7,7 +7,8 @@ import { useAccount,
   useContractWrite,
   useWebSocketProvider,
   usePrepareContractWrite,
-  useProvider } from "wagmi";
+  useProvider, 
+  Address} from "wagmi";
 
 import { WallyButton } from "../components/WallyButton.js";
 import  { WallyHeader } from "../components/WallyHeader.js";
@@ -34,11 +35,9 @@ import {
   Checkbox,
 } from "@chakra-ui/react";
 
-import { useEffect } from 'react';
-
 import { USER_MANAGEMENT_CONTRACT_MUMBAI } from "../utils/constants";
 import USER_MANAGEMENT_ABI from "../assets/contracts/WallyWalletUsers.json";
-
+import { useRef, useEffect, useState } from "react";
 
 type Props = {
   header: string;
@@ -69,13 +68,21 @@ const Landing: NextPage<Props> = (props) => {
     signerOrProvider: signer,
   })
 
-  const registerUserCall = async () => {
-    contract?.registerUser("name", "email", address, 0, 0, {
+  const registerUserCall = async (_name : string, _email : string, _address : Address) => {
+    const tx = await contract?.registerUser(_name, _email, _address, 0, 0, {
       maxPriorityFeePerGas: await provider?.send(
         "eth_maxPriorityFeePerGas",
         []
       ),
     });
+    const txHash = tx.hash;
+
+    console.log("txHash", txHash);
+
+    if (txHash) {
+      router.push('/menu')
+    }
+
   };
 
   // const { data: getUserInfoData , isError, isLoading} = useContractRead({
@@ -100,17 +107,60 @@ const Landing: NextPage<Props> = (props) => {
 
   const handleClick = (e: any) => {
     e.preventDefault();
-    console.log("clicked");
-    // router.push('/menu');
-    //registerUserCall;
-    //console.log(registerUserCall);
-    console.log("call 01");
-    registerUserCall();
-    console.log("call 02");
-    //console.log(getUserInfoData);
-    console.log("call 03");
+
+    const inputElementName = inputRefName.current;
+    const inputElementDoB = inputRefDoB.current;
+    const inputElementEmail = inputRefEmail.current;
+    const inputElementCheck1 = inputRefCheck1.current;
+    const inputElementCheck2 = inputRefCheck2.current;
+
+    let validForm = true;
+
+    if (inputElementName) {
+      if (inputElementName.value === "") {
+        validForm = false;
+        console.log("name is empty");
+      }
+    }
+    if (inputElementDoB) {
+      if (inputElementDoB.value === "") {
+        validForm = false;
+        console.log("DoB is empty");
+      }
+    }
+    if (inputElementEmail) {
+      if (inputElementEmail.value === "") {
+        validForm = false;
+        console.log("email is empty");
+      }
+    }
+    if (inputElementCheck1) {
+      if (inputElementCheck1.checked === false) {
+        validForm = false;
+        console.log("check1 is empty");
+      }
+    }
+    if (inputElementCheck2) {
+      if (inputElementCheck2.checked === false) {
+        validForm = false;
+        console.log("check2 is empty");
+      }
+    }
+
+    console.log("validForm", validForm);
+
+    if (validForm && inputElementName && inputElementEmail && address) {
+      registerUserCall(inputElementName.value, inputElementEmail.value, address);
+    }
+
+
   };
 
+  const inputRefName = useRef(null);
+  const inputRefEmail = useRef(null);
+  const inputRefDoB = useRef(null);
+  const inputRefCheck1 = useRef(null);
+  const inputRefCheck2 = useRef(null);
 
   return (
     <>
@@ -153,25 +203,33 @@ const Landing: NextPage<Props> = (props) => {
                       placeholder="Enter your Name"
                       width={'250'}
                       bgColor="white"
+                      ref={inputRefName}
                     />
 
-                    {/* <Input
+                    <Input
+                      id="userDoB"
                       placeholder="Date of Birth"
                       size="md"
                       type="date"
                       width={'350'}
                       bgColor="white"
-                      /> */}
+                      ref={inputRefDoB}
+                      />
 
                     <Input id="userEmail"
                       type="email"
                       placeholder="Enter your email address"
                       width={'250'}
                       bgColor="white"
+                      ref={inputRefEmail}
                     />
                     
                     <div>
-                      <Checkbox bgColor="white" marginRight={"4"}>
+                      <Checkbox 
+                        id="check1" 
+                        bgColor="white" 
+                        marginRight={"4"}
+                        ref={inputRefCheck1}>
                       </Checkbox>
                       <span>
                       I agree to the{" "}
@@ -182,7 +240,11 @@ const Landing: NextPage<Props> = (props) => {
                     </div>
 
                     <div>
-                      <Checkbox bgColor="white" marginRight={"4"}>
+                      <Checkbox 
+                        id="check2" 
+                        bgColor="white" 
+                        marginRight={"4"}
+                        ref={inputRefCheck2}>
                       </Checkbox>
                       <span>
                       I agree to the{" "}
@@ -202,7 +264,7 @@ const Landing: NextPage<Props> = (props) => {
 
             <Stack justify="center" direction="row" padding={"5"}>
               {isConnected && (
-                  <WallyButton boxShadow='xl' mx={6} onClick={handleClick}>Get Started</WallyButton>
+                  <WallyButton mx={6} onClick={handleClick}>Get Started</WallyButton>
               )}
             </Stack>
           </Container>
