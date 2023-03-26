@@ -58,7 +58,7 @@ const Landing: NextPage<Props> = (props) => {
             <Box bg="bg-surface" borderRadius="lg" p={{ base: "4", md: "6" }}>
 
                 <Center>
-                  <Image src={KidsWithTablet} alt="kids" />
+                  <Image src={KidsWithTablet} width={"350"} height={"350"} alt="kids" />
                 </Center>
 
             </Box>

@@ -120,18 +120,24 @@ const Landing: NextPage<Props> = (props) => {
       if (inputElementName.value === "") {
         validForm = false;
         console.log("name is empty");
+      } else {
+        console.log("name", inputElementName.value);
       }
     }
     if (inputElementDoB) {
       if (inputElementDoB.value === "") {
         validForm = false;
         console.log("DoB is empty");
+      } else {
+        console.log("DoB", inputElementDoB.value);
       }
     }
     if (inputElementEmail) {
       if (inputElementEmail.value === "") {
         validForm = false;
         console.log("email is empty");
+      } else {
+        console.log("email", inputElementEmail.value);
       }
     }
     if (inputElementCheck1) {
