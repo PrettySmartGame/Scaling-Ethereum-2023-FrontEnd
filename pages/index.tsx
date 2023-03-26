@@ -89,7 +89,7 @@ const Landing: NextPage<Props> = (props) => {
           >
             <Box bg="bg-surface" borderRadius="lg" p={{ base: "4", md: "6" }}>
               <Center>
-                <Image src={BlockchainGame} alt="logo" />
+                <Image src={BlockchainGame} width={"350"} height={"350"} alt="logo" />
               </Center>
             </Box>
 
@@ -98,6 +98,11 @@ const Landing: NextPage<Props> = (props) => {
                 <WallyButton boxShadow="xl" mx={6} onClick={handleClick}>
                   Start Now
                 </WallyButton>
+            )}
+              {!isConnected && (
+                <Center>
+                  <b>Connect your wallet to start playing.</b>
+                </Center>
             )}
             </Stack>
           </Container>
