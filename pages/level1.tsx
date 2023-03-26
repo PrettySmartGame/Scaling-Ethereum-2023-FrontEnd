@@ -41,26 +41,26 @@ const PaintOptions: NextPage<Props> = (props) => {
     title: "Identity in Web 3",
     active: currentStep >= 1,
     complete: currentStep > 1,
-    urlPath: "/paint"
+    urlPath: "/paint01"
   };
 
   const step2Data: StepData = {
     title: "Security",
     active: currentStep >= 2,
     complete: currentStep > 2,
-    urlPath: "/paint"
+    urlPath: "/paint02"
   };
   const step3Data: StepData = {
     title: "Claim Your Tokens",
     active: currentStep >= 3,
     complete: currentStep > 3,
-    urlPath: "/paint"
+    urlPath: "/paint03"
   };
   const step4Data: StepData = {
     title: "Transfer Tokens",
     active: currentStep >= 4,
     complete: currentStep > 4,
-    urlPath: "/paint"
+    urlPath: "/paint04"
   };
 
 

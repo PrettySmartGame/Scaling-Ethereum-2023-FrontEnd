@@ -38,7 +38,7 @@ const Paint: NextPage<Props> = (props) => {
   
   const [stepLevel, SetStepLevel] = useState(1);
 
-  const [imageUrl, setImageUrl] = useState("../assets/paint/web3Identity.png");
+  const [imageUrl, setImageUrl] = useState("../assets/paint/downloadTokens.png");
 
   const flexDirection = useBreakpointValue({ base: 'column', md: 'row' });
 
@@ -141,7 +141,7 @@ const Paint: NextPage<Props> = (props) => {
                     <ColorPicker color={color} setColor={setColor} />
 
                     <ReactAudioPlayer
-                      src="../assets/paint/step1_IdentityInWeb3.ogg"
+                      src="../assets/paint/step3_TradeNFTS.ogg"
                       autoPlay={true}
                       controls
                       onPlay={(e) => console.log("onPlay")}

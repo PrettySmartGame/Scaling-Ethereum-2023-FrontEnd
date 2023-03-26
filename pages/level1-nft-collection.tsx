@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import { useAccount } from "wagmi";
 
 import { WallyButton } from "../components/WallyButton.js";
 import  { WallyHeader } from "../components/WallyHeader.js";
@@ -26,6 +25,20 @@ import {
 } from "@chakra-ui/react";
 import { Footer } from "./Footer";
 
+import { NFTS_MANAGEMENT_CONTRACT_MUMBAI } from "../utils/constants";
+import NFTs_MANAGEMENT_ABI from "../assets/contracts/WallyWalletNFTs.json";
+import { useRef, useEffect, useState } from "react";
+
+import { useAccount, 
+  useNetwork,
+  useContract,
+  useContractRead,
+  useSigner,
+  useContractWrite,
+  useWebSocketProvider,
+  usePrepareContractWrite,
+  useProvider, 
+  Address} from "wagmi";
 type Props = {
   header: string;
   subHeader: string;
@@ -33,7 +46,44 @@ type Props = {
 
 const Landing: NextPage<Props> = (props) => {
 
-  const { isConnected } = useAccount();
+  const { isConnected, address } = useAccount();
+  const { chain, chains } = useNetwork();
+  const { data: signer } = useSigner();
+
+  const [images, setImages] = useState([{}]);
+
+  const getFileURL = (cid: any) => {
+    return `https://${cid}.ipfs.dweb.link/wallywalletpaint.png`;
+  };
+
+
+  const { data: getUserNFTs , isError, isLoading} = useContractRead({
+    address: NFTS_MANAGEMENT_CONTRACT_MUMBAI,
+    abi: NFTs_MANAGEMENT_ABI,
+    functionName: 'tokenMetadataOfOwner',
+    args: [address],
+    onSuccess(data) {
+      console.log('Success', data)
+      if(data) {
+        console.log("User NFTs");
+        const myArray = Object.values(data);
+        console.log(myArray);
+        setImages(myArray);
+      }       
+    },    
+  });  
+
+  useEffect(() => {
+     if(isConnected) {
+      console.log("check if user exist in the SC");
+      console.log("address", address);
+      console.log("chain:", chain);
+      let result = getUserNFTs;
+      console.log(result);
+
+      }
+     }
+   , [isConnected]); 
 
   return (
     <>
@@ -60,7 +110,18 @@ const Landing: NextPage<Props> = (props) => {
 
             <Box bg="bg-surface" borderRadius="lg" p={{ base: "4", md: "6" }}>
 
-              <h1>NFT Collection</h1>
+              <h1><b>NFT Collection</b></h1>
+              <br/>
+
+              <div className="image-grid">
+                {images && images.map((image, index) => (
+                 <div>
+                    <h1>{image.title}</h1>
+                    <h1>{image.subtitle}</h1>
+                    <img src={getFileURL(image.cid)} alt="image-{$index}" width={200} height={200} />
+                  </div>
+                ))}
+              </div>              
 
             </Box>
 
@@ -75,6 +136,25 @@ const Landing: NextPage<Props> = (props) => {
         </Box>
       </Box>
       <style jsx>{`
+
+            .image-grid {
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 1rem;
+            }
+
+            @media (max-width: 768px) {
+              .image-grid {
+                grid-template-columns: repeat(2, 1fr);
+              }
+            }
+
+            @media (max-width: 480px) {
+              .image-grid {
+                grid-template-columns: repeat(1, 1fr);
+              }
+            }
+
           .container-l1 {
             display: flex;
             justify-content: center;

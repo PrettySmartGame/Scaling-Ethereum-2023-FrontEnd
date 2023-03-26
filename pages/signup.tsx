@@ -76,13 +76,10 @@ const Landing: NextPage<Props> = (props) => {
       ),
     });
     const txHash = tx.hash;
-
     console.log("txHash", txHash);
-
     if (txHash) {
       router.push('/menu')
     }
-
   };
 
   // const { data: getUserInfoData , isError, isLoading} = useContractRead({

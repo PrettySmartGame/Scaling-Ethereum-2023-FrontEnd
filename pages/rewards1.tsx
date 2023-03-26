@@ -30,6 +30,7 @@ type Props = {
   header: string;
   subHeader: string;
 };
+import ReactAudioPlayer from "react-audio-player";
 
 const Landing: NextPage<Props> = (props) => {
 
@@ -88,6 +89,13 @@ const Landing: NextPage<Props> = (props) => {
                 <StepElement data={step2Data} />
                 <StepElement data={step3Data} />
                 <StepElement data={step4Data} />
+                <ReactAudioPlayer
+                      className="audio-element"
+                      src="../assets/app/system_TurnYourArtIntoAnNFT.ogg"
+                      autoPlay={true}
+                      controls
+                      onPlay={(e) => console.log("onPlay")}
+                    />
               </Box>
             </Center>
 
@@ -102,6 +110,11 @@ const Landing: NextPage<Props> = (props) => {
         </Box>
       </Box>
       <style jsx>{`
+
+          .audio-element {
+            display: none;
+          }
+
           .container-l1 {
             display: flex;
             justify-content: center;

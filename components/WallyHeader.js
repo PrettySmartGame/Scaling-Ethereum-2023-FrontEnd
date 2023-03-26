@@ -27,12 +27,12 @@ export const WallyHeader = () => {
   const router = useRouter()
   const { isConnected, address } = useAccount();
 
-  useEffect(() => {
-    if(!isConnected) {
-      router.push('/');
-     }
-    }
-  , [isConnected]); 
+  // useEffect(() => {
+  //   if(!isConnected) {
+  //     router.push('/');
+  //    }
+  //   }
+  // , [isConnected]); 
 
   return (
     <>

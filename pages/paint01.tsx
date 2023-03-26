@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import { useAccount } from "wagmi";
 
 import { WallyButton } from "../components/WallyButton.js";
 import { WallyHeader } from "../components/WallyHeader.js";
@@ -22,6 +21,21 @@ import { Box,
 import { Web3Storage } from 'web3.storage';
 import { useRef, useEffect, useState } from "react";
 
+import { useAccount, 
+  useNetwork,
+  useContract,
+  useContractRead,
+  useSigner,
+  useContractWrite,
+  useWebSocketProvider,
+  usePrepareContractWrite,
+  useProvider, 
+  Address} from "wagmi";
+
+import { NFTS_MANAGEMENT_CONTRACT_MUMBAI } from "../utils/constants";
+import NFTs_MANAGEMENT_ABI from "../assets/contracts/WallyWalletNFTs.json";
+import { useRouter } from 'next/router'
+
 type Props = {
   header: string;
   subHeader: string;
@@ -30,7 +44,12 @@ type Props = {
 export const WEB3STORAGE_API_KEY = process.env.WEB3STORAGE_API_KEY || "";
 
 const Paint: NextPage<Props> = (props) => {
-  const { isConnected } = useAccount();
+
+  const { isConnected, address } = useAccount();
+  const { chain, chains } = useNetwork();
+  const { data: signer } = useSigner();
+  const router = useRouter()
+
 
   const [color, setColor] = useState("#000000");
   const [lineWidth, setLineWidth] = useState(5);
@@ -62,7 +81,11 @@ const Paint: NextPage<Props> = (props) => {
       const cid = await client.put(files);
       console.log(cid);
       console.log(getFileURL(cid));
-      return cid;
+      //return cid;
+
+      minNFT("Paint Game", "Identity Web 3", cid, address!);
+
+
     }
   };
 
@@ -72,6 +95,29 @@ const Paint: NextPage<Props> = (props) => {
     // router.push('/rewards1');
     readImageAsPNG();
   };
+
+  const provider = useWebSocketProvider();
+
+  const contract = useContract({
+    address: NFTS_MANAGEMENT_CONTRACT_MUMBAI,
+    abi: NFTs_MANAGEMENT_ABI,
+    signerOrProvider: signer,
+  })
+
+  const minNFT = async (_title : string, _subTitle : string, _cid: string, _address : Address) => {
+    const tx = await contract?.mintNFT(_address, _cid, _title, _subTitle, {
+      maxPriorityFeePerGas: await provider?.send(
+        "eth_maxPriorityFeePerGas",
+        []
+      ),
+    });
+    const txHash = tx.hash;
+    console.log("txHash", txHash);
+    if (txHash) {
+      router.push('/rewards1')
+    }
+  };
+
 
   useEffect(() => {
     if(isConnected) {
