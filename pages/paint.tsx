@@ -130,7 +130,7 @@ const Paint: NextPage<Props> = (props) => {
                     <ColorPicker color={color} setColor={setColor} />
 
                     <ReactAudioPlayer
-                      src="../assets/step1_IdentityInWeb3.ogg"
+                      src="../assets/paint/step1_IdentityInWeb3.ogg"
                       autoPlay={true}
                       controls
                       onPlay={(e) => console.log("onPlay")}
