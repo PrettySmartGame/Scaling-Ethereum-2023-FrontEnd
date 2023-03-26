@@ -43,6 +43,10 @@ const Landing: NextPage<Props> = (props) => {
     args: [address],
     onSuccess(data) {
       console.log('Success', data)
+      if(data) {
+        console.log("user exist in the SC");
+        router.push('/menu');
+      }       
     },    
   });  
 
@@ -59,10 +63,10 @@ const Landing: NextPage<Props> = (props) => {
       console.log("chain:", chain);
       let result = doesUserExistCall;
       console.log(result);
-      if(result) {
-        console.log("user exist in the SC");
-        router.push('/menu');
-      } 
+      // if(result) {
+      //   console.log("user exist in the SC");
+      //   router.push('/menu');
+      // } 
 
       }
      }
